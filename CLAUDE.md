@@ -1,8 +1,8 @@
-# The GhariGhora
+# The GariGhora
 
-## GhariGhora Workspace
+## GariGhora Workspace
 
-This project is part of the larger GhariGhora platform.
+This project is part of the larger GariGhora platform.
 
 The sibling projects are located in the parent directory:
 
@@ -62,7 +62,7 @@ MVP — V1
 
 # 1. Product Overview
 
-The GhariGhora is a transportation marketplace connecting passengers with drivers.
+The GariGhora is a transportation marketplace connecting passengers with drivers.
 
 The MVP supports two services:
 
@@ -295,7 +295,7 @@ After login:
 
 ```text
 ┌──────────────────────────────┐
-│       THE GHARIGHORA         │
+│       THE GARIGHORA          │
 │                              │
 │       What do you need?      │
 │                              │
@@ -836,7 +836,7 @@ The payment experience should follow the operational simplicity of services such
 
 # 27. Platform Commission
 
-The GhariGhora earns commission from completed trips.
+The GariGhora earns commission from completed trips.
 
 Example:
 
@@ -855,7 +855,7 @@ Passenger pays:
 Driver owes:
 
 ```text
-৳200 → The GhariGhora
+৳200 → The GariGhora
 ```
 
 ---
@@ -1835,7 +1835,7 @@ Easy to maintain
 Fast to launch
 ```
 
-The goal is NOT to build the final version of The GhariGhora in 8 weeks.
+The goal is NOT to build the final version of The GariGhora in 8 weeks.
 
 The goal is to launch a functional marketplace, operate real trips, learn from real users, validate the business model, and improve after launch.
 

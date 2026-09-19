@@ -21,7 +21,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "How it works",
   description:
-    "From posting a trip to paying the driver: how a GhariGhora booking runs, for passengers and for drivers.",
+    "From posting a trip to paying the driver: how a GariGhora booking runs, for passengers and for drivers.",
   path: routes.howItWorks,
   keywords: [...keywordGroups.brand, ...keywordGroups.rental, ...keywordGroups.returnTrip],
 });
@@ -67,9 +67,9 @@ export default function HowItWorksPage() {
           breadcrumbSchema([{ name: "How it works", path: routes.howItWorks }]),
           webPageSchema({
             type: "WebPage",
-            name: "How GhariGhora works",
+            name: "How GariGhora works",
             description:
-              "From posting a trip to paying the driver: how a GhariGhora booking runs, for passengers and for drivers.",
+              "From posting a trip to paying the driver: how a GariGhora booking runs, for passengers and for drivers.",
             path: routes.howItWorks,
           }),
         ]}
@@ -77,7 +77,7 @@ export default function HowItWorksPage() {
       <PageHero
         breadcrumb="How it works"
         eyebrow="End to end"
-        title="How a GhariGhora trip actually runs"
+        title="How a GariGhora trip actually runs"
         description="The same booking, seen from both ends — and what happens between accepting an offer and handing over the fare."
       >
         <div className="flex flex-col gap-3 sm:flex-row">

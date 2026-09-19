@@ -95,7 +95,7 @@ export function Hero() {
           />
           <div
             role="img"
-            aria-label="Preview of the GhariGhora app showing a Dhaka to Cumilla return trip for 1,100 Taka"
+            aria-label="Preview of the GariGhora app showing a Dhaka to Cumilla return trip for 1,100 Taka"
             className="relative rounded-[2rem] border border-brand-on-brand/20 bg-brand-on-brand/10 p-3 shadow-brand-lg backdrop-blur-md"
           >
             <div className="rounded-[1.5rem] bg-brand-surface-raised p-4 text-brand-ink">

@@ -71,7 +71,7 @@ export function pageMetadata({
  * These are the phrases people in Bangladesh actually search for.
  */
 export const keywordGroups = {
-  brand: ["GhariGhora", "Ghari Ghora", "Ghori Ghora", "Return Gari"],
+  brand: ["GariGhora", "Gari Ghora", "Ghori Ghora", "Return Gari"],
   rental: [
     "car rental Bangladesh",
     "rent a car Dhaka",

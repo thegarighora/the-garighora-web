@@ -191,7 +191,7 @@ export function TwoServices() {
 
       <p className="mt-4 text-center text-sm text-brand-ink-muted">
         Both services book the <strong className="font-semibold text-brand-ink">whole vehicle</strong>{" "}
-        — GhariGhora does not sell individual seats.
+        — GariGhora does not sell individual seats.
       </p>
     </Section>
   );

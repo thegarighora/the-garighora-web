@@ -9,9 +9,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "Terms of Service",
   description:
-    "The terms that apply when you use GhariGhora to book a car or to offer one — bookings, fares, payment, cancellations, conduct and liability.",
+    "The terms that apply when you use GariGhora to book a car or to offer one — bookings, fares, payment, cancellations, conduct and liability.",
   path: routes.terms,
-  keywords: [...keywordGroups.brand, "GhariGhora terms of service"],
+  keywords: [...keywordGroups.brand, "GariGhora terms of service"],
   type: "article",
 });
 
@@ -273,7 +273,7 @@ export default function TermsPage() {
           webPageSchema({
             type: "WebPage",
             name: "Terms of Service",
-            description: "The terms that apply when you use GhariGhora to book a car or to offer one — bookings, fares, payment, cancellations, conduct and liability.",
+            description: "The terms that apply when you use GariGhora to book a car or to offer one — bookings, fares, payment, cancellations, conduct and liability.",
             path: routes.terms,
           }),
         ]}
@@ -282,7 +282,7 @@ export default function TermsPage() {
         breadcrumb="Terms of Service"
         eyebrow={`Last updated ${siteConfig.legalLastUpdated}`}
         title="Terms of Service"
-        description="What you can expect from GhariGhora, and what we expect from you, when you book a car or offer one."
+        description="What you can expect from GariGhora, and what we expect from you, when you book a car or offer one."
       />
 
       <LegalBody

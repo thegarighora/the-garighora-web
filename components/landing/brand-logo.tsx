@@ -61,7 +61,7 @@ export function BrandLogo({
             invert ? "text-brand-on-brand" : "text-brand-ink"
           )}
         >
-          Ghari
+          Gari
           <span
             className={
               invert ? "text-brand-secondary-300" : "text-brand-secondary-600"

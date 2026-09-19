@@ -9,9 +9,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "Driver Agreement",
   description:
-    "The terms that apply to drivers on GhariGhora: verification, vehicles, fares, collecting cash, platform commission, settlement and account standing.",
+    "The terms that apply to drivers on GariGhora: verification, vehicles, fares, collecting cash, platform commission, settlement and account standing.",
   path: routes.driverAgreement,
-  keywords: [...keywordGroups.brand, "GhariGhora driver agreement"],
+  keywords: [...keywordGroups.brand, "GariGhora driver agreement"],
   type: "article",
 });
 
@@ -233,7 +233,7 @@ export default function DriverAgreementPage() {
           webPageSchema({
             type: "WebPage",
             name: "Driver Agreement",
-            description: "The terms that apply to drivers on GhariGhora: verification, vehicles, fares, collecting cash, platform commission, settlement and account standing.",
+            description: "The terms that apply to drivers on GariGhora: verification, vehicles, fares, collecting cash, platform commission, settlement and account standing.",
             path: routes.driverAgreement,
           }),
         ]}
@@ -242,7 +242,7 @@ export default function DriverAgreementPage() {
         breadcrumb="Driver Agreement"
         eyebrow={`Last updated ${siteConfig.legalLastUpdated}`}
         title="Driver Agreement"
-        description="What you agree to when you drive on GhariGhora — and what we owe you in return."
+        description="What you agree to when you drive on GariGhora — and what we owe you in return."
       />
 
       <LegalBody

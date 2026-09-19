@@ -18,22 +18,22 @@ import { footerColumns, routes, siteConfig } from "@/lib/site-config";
  */
 const socials = [
   {
-    label: "GhariGhora on Facebook",
+    label: "GariGhora on Facebook",
     icon: FacebookIcon,
     href: siteConfig.social.facebook,
   },
   {
-    label: "GhariGhora on Instagram",
+    label: "GariGhora on Instagram",
     icon: InstagramIcon,
     href: siteConfig.social.instagram,
   },
   {
-    label: "GhariGhora on YouTube",
+    label: "GariGhora on YouTube",
     icon: YoutubeIcon,
     href: siteConfig.social.youtube,
   },
   {
-    label: "GhariGhora on LinkedIn",
+    label: "GariGhora on LinkedIn",
     icon: LinkedinIcon,
     href: siteConfig.social.linkedin,
   },
@@ -51,7 +51,7 @@ export function Footer() {
             <Link
               href={routes.home}
               className="w-fit rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-              aria-label="GhariGhora home"
+              aria-label="GariGhora home"
             >
               <BrandLogo />
             </Link>

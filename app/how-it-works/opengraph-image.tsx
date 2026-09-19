@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "How a GhariGhora trip works, for passengers and drivers";
+export const alt = "How a GariGhora trip works, for passengers and drivers";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

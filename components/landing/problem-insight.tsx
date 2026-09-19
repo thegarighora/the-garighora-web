@@ -6,7 +6,7 @@ import { routes } from "@/lib/site-config";
 
 /**
  * The insight section: what happens to the return leg today vs what happens on
- * GhariGhora. The diagram is built from markup and brand tokens — no images.
+ * GariGhora. The diagram is built from markup and brand tokens — no images.
  */
 export function ProblemInsight({
   moreLink = true,
@@ -37,7 +37,7 @@ export function ProblemInsight({
         />
         <JourneyPanel
           variant="solution"
-          label="With GhariGhora"
+          label="With GariGhora"
           title="The return leg becomes a ride"
           outbound={{ note: "Passenger on board", fare: "৳3,200" }}
           inbound={{ note: "Return Car booked", fare: "৳1,100 extra" }}

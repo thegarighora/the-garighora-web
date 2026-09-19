@@ -119,7 +119,7 @@ export default function RentalCarPage() {
         breadcrumb="Rental Car"
         eyebrow="Service 01"
         title="Need a car for your trip? Book the whole thing."
-        description="Tell GhariGhora where you are going and when. Verified drivers send you fares, you pick the one you like, and the vehicle is yours for the journey."
+        description="Tell GariGhora where you are going and when. Verified drivers send you fares, you pick the one you like, and the vehicle is yours for the journey."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <CtaLink href={links.passengerSignup} tone="onDark">

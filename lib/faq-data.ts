@@ -42,7 +42,7 @@ export const faqGroups: FaqGroup[] = [
         id: "whole-car",
         question: "Am I booking a seat or the whole car?",
         answer:
-          "The whole car, for both Rental Car and Return Car. GhariGhora does not sell individual seats or split a vehicle between strangers, so the car you book is yours for that trip.",
+          "The whole car, for both Rental Car and Return Car. GariGhora does not sell individual seats or split a vehicle between strangers, so the car you book is yours for that trip.",
         featured: true,
       },
       {
@@ -113,7 +113,7 @@ export const faqGroups: FaqGroup[] = [
         id: "gari-bhai",
         question: "Who is the Gari Bhai on my booking?",
         answer:
-          "A GhariGhora operations agent assigned to your booking. They call you and the driver to confirm pickup details, keep an eye on the trip while it runs, and are the person to ring if something needs sorting out on the road.",
+          "A GariGhora operations agent assigned to your booking. They call you and the driver to confirm pickup details, keep an eye on the trip while it runs, and are the person to ring if something needs sorting out on the road.",
       },
       {
         id: "cancellation",
@@ -162,7 +162,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         id: "commission",
-        question: "How does GhariGhora make money?",
+        question: "How does GariGhora make money?",
         answer:
           "A commission on completed trips, paid by the driver rather than added to the passenger's fare. The driver collects the full fare in cash and settles the commission separately by bKash, Nagad, bank transfer or cash.",
       },

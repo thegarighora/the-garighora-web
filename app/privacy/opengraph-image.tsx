@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "GhariGhora Privacy Policy";
+export const alt = "GariGhora Privacy Policy";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

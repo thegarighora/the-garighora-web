@@ -1,5 +1,5 @@
 /* ============================================================================
- * GhariGhora — Brand Theme (SINGLE SOURCE OF TRUTH)
+ * GariGhora — Brand Theme (SINGLE SOURCE OF TRUTH)
  * ----------------------------------------------------------------------------
  * Every colour and gradient used anywhere on the public site is declared in
  * this file. No component may contain a raw hex value, an oklch(...) literal,
@@ -55,7 +55,7 @@
  * "Highway Teal" (the road) travelling into "Sunset Amber" (the return leg).
  * Deliberately warm and earthy rather than a generic SaaS violet/blue.
  *
- * The five values marked ← BRAND are the official GhariGhora palette; every
+ * The five values marked ← BRAND are the official GariGhora palette; every
  * other step in a ramp exists only to shade around them.
  *
  *   Primary     #0F766E   teal

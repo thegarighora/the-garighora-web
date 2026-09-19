@@ -112,16 +112,16 @@ export default function ForDriversPage() {
           breadcrumbSchema([{ name: "For Drivers", path: routes.forDrivers }]),
           webPageSchema({
             type: "WebPage",
-            name: "Drive with GhariGhora",
+            name: "Drive with GariGhora",
             description:
-              "How drivers earn on GhariGhora: take a rental, post the empty return leg, collect cash after each trip and settle commission separately.",
+              "How drivers earn on GariGhora: take a rental, post the empty return leg, collect cash after each trip and settle commission separately.",
             path: routes.forDrivers,
           }),
         ]}
       />
       <PageHero
         breadcrumb="For Drivers"
-        eyebrow="Drive with GhariGhora"
+        eyebrow="Drive with GariGhora"
         title="Get paid for the drive home."
         description="Take rental bookings like you always have — then post the empty return leg and let it earn too. You set the fare, you collect the cash, we handle the matching."
       >
