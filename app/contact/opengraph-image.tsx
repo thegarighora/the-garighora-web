@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "Contact GhariGhora support";
+export const alt = "Contact GariGhora support";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

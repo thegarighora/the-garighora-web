@@ -34,12 +34,12 @@ const trustItems: TrustItem[] = [
   {
     icon: MessagesSquare,
     title: "Fares agreed in the app",
-    body: "Offers and counter-offers happen inside GhariGhora and are capped at a couple of rounds. The fare you accept is the fare you pay — no bait-and-switch at the pickup point.",
+    body: "Offers and counter-offers happen inside GariGhora and are capped at a couple of rounds. The fare you accept is the fare you pay — no bait-and-switch at the pickup point.",
   },
   {
     icon: PhoneCall,
     title: "A real person on every booking",
-    body: "Your Gari Bhai — a GhariGhora operations agent — is assigned to your booking, calls both you and the driver to confirm the details, and stays reachable until the trip is done.",
+    body: "Your Gari Bhai — a GariGhora operations agent — is assigned to your booking, calls both you and the driver to confirm the details, and stays reachable until the trip is done.",
     feature: true,
   },
   {
@@ -61,7 +61,7 @@ export function TrustSafety({
     <Section id="trust" aria-labelledby="trust-heading">
       <SectionHeading
         id="trust-heading"
-        eyebrow="Why GhariGhora"
+        eyebrow="Why GariGhora"
         title="Built so both sides can trust the trip"
         description="Intercity travel in Bangladesh usually runs on phone calls and word of mouth. We keep the flexibility, and add verification, a recorded fare, and someone accountable on the other end of the line."
       />

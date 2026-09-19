@@ -13,9 +13,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "About",
   description:
-    "Why GhariGhora exists: intercity cars in Bangladesh spend half their journey empty. We turn that empty leg into a cheaper ride and a second fare.",
+    "Why GariGhora exists: intercity cars in Bangladesh spend half their journey empty. We turn that empty leg into a cheaper ride and a second fare.",
   path: routes.about,
-  keywords: [...keywordGroups.brand, "about GhariGhora", "car marketplace Bangladesh"],
+  keywords: [...keywordGroups.brand, "about GariGhora", "car marketplace Bangladesh"],
 });
 
 const principles = [
@@ -55,9 +55,9 @@ export default function AboutPage() {
           breadcrumbSchema([{ name: "About", path: routes.about }]),
           webPageSchema({
             type: "AboutPage",
-            name: "About GhariGhora",
+            name: "About GariGhora",
             description:
-              "Why GhariGhora exists: intercity cars in Bangladesh spend half their journey empty, and that empty leg should be somebody else's cheaper ride.",
+              "Why GariGhora exists: intercity cars in Bangladesh spend half their journey empty, and that empty leg should be somebody else's cheaper ride.",
             path: routes.about,
           }),
         ]}
@@ -94,7 +94,7 @@ export default function AboutPage() {
                 <strong className="font-semibold text-brand-ink">
                   Those two people should be in the same car.
                 </strong>{" "}
-                That is the whole idea. GhariGhora lets a driver post the empty
+                That is the whole idea. GariGhora lets a driver post the empty
                 leg as a Return Car trip, and lets a passenger book it for a
                 fraction of a fresh rental — the driver earns twice on one
                 journey, the passenger travels cheaper, and one less car makes an

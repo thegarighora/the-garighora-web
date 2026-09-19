@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "Drive with GhariGhora — get paid for the drive home";
+export const alt = "Drive with GariGhora — get paid for the drive home";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

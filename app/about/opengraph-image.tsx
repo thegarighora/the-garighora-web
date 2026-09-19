@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "About GhariGhora — why intercity cars should not drive home empty";
+export const alt = "About GariGhora — why intercity cars should not drive home empty";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

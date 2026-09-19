@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "GhariGhora Rental Car — book a whole car anywhere in Bangladesh";
+export const alt = "GariGhora Rental Car — book a whole car anywhere in Bangladesh";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

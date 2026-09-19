@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "GhariGhora Cancellation Policy";
+export const alt = "GariGhora Cancellation Policy";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

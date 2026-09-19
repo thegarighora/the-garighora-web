@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "Trust and safety at GhariGhora — verified drivers and a human on every booking";
+export const alt = "Trust and safety at GariGhora — verified drivers and a human on every booking";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

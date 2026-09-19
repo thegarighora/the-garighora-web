@@ -20,22 +20,22 @@
  * TODO: confirm the final production domain.
  */
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://gharighora.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://garighora.com"
 ).replace(/\/$/, "");
 
 export const siteConfig = {
-  name: "GhariGhora",
+  name: "GariGhora",
   /** Legal entity name used in structured data. TODO: confirm registered name. */
-  legalName: "GhariGhora Ltd.",
+  legalName: "GariGhora Ltd.",
   /** Latin spelling varies in the wild; kept here so copy stays consistent. */
-  altNames: ["Ghori Ghora", "Ghari Ghora", "Return Gari"],
+  altNames: ["Ghori Ghora", "Gari Ghora", "Return Gari"],
   tagline: "A car is already going that way.",
   pitch:
     "A car is already going that way — don't pay for an empty seat to come back empty.",
   supportPhone: "+880 1XXX-XXXXXX", // TODO: replace with the real Gari Bhai hotline
-  supportEmail: "support@gharighora.com", // TODO: replace with the real support inbox
-  careersEmail: "careers@gharighora.com", // TODO: replace with the real careers inbox
-  privacyEmail: "privacy@gharighora.com", // TODO: replace with the real privacy inbox
+  supportEmail: "support@garighora.com", // TODO: replace with the real support inbox
+  careersEmail: "careers@garighora.com", // TODO: replace with the real careers inbox
+  privacyEmail: "privacy@garighora.com", // TODO: replace with the real privacy inbox
   address: "Dhaka, Bangladesh", // TODO: replace with the registered office address
   /** Shown on the legal pages. Update whenever a policy is revised. */
   legalLastUpdated: "1 September 2026",
@@ -50,12 +50,12 @@ export const siteConfig = {
   },
   /** TODO: replace with the real handles once the accounts exist. */
   social: {
-    facebook: "https://facebook.com/gharighora",
-    instagram: "https://instagram.com/gharighora",
-    youtube: "https://youtube.com/@gharighora",
-    linkedin: "https://linkedin.com/company/gharighora",
+    facebook: "https://facebook.com/garighora",
+    instagram: "https://instagram.com/garighora",
+    youtube: "https://youtube.com/@garighora",
+    linkedin: "https://linkedin.com/company/garighora",
     /** Without the @ — used for twitter:site / twitter:creator. */
-    twitterHandle: "gharighora",
+    twitterHandle: "garighora",
   },
   /**
    * Search-console ownership tokens. Paste the values in when the properties
@@ -114,7 +114,7 @@ export const footerColumns = [
   {
     heading: "Company",
     items: [
-      { label: "About GhariGhora", href: routes.about },
+      { label: "About GariGhora", href: routes.about },
       { label: "Trust & Safety", href: routes.trustSafety },
       { label: "Careers", href: routes.careers },
       { label: "Contact us", href: routes.contact },

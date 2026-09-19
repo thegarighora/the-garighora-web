@@ -21,9 +21,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "Contact",
   description:
-    "Reach GhariGhora support by phone or email — for trips in progress, booking problems, driver questions, press and partnerships.",
+    "Reach GariGhora support by phone or email — for trips in progress, booking problems, driver questions, press and partnerships.",
   path: routes.contact,
-  keywords: [...keywordGroups.brand, "GhariGhora support", "contact GhariGhora"],
+  keywords: [...keywordGroups.brand, "GariGhora support", "contact GariGhora"],
 });
 
 const tel = `tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`;
@@ -63,9 +63,9 @@ export default function ContactPage() {
           breadcrumbSchema([{ name: "Contact", path: routes.contact }]),
           webPageSchema({
             type: "ContactPage",
-            name: "Contact GhariGhora",
+            name: "Contact GariGhora",
             description:
-              "Reach GhariGhora support by phone or email for trips in progress, booking problems, driver questions, press and partnerships.",
+              "Reach GariGhora support by phone or email for trips in progress, booking problems, driver questions, press and partnerships.",
             path: routes.contact,
           }),
         ]}

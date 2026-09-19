@@ -21,7 +21,7 @@ const inter = Inter({
 });
 
 const defaultTitle =
-  "GhariGhora — Rental Car & Return Car across Bangladesh";
+  "GariGhora — Rental Car & Return Car across Bangladesh";
 const defaultDescription =
   "A car is already going that way. Book a full car for your trip, or ride a driver's empty return leg for much less — verified drivers, pay after the trip.";
 

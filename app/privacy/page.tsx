@@ -9,9 +9,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "What personal data GhariGhora collects, why we collect it, who sees it, how long we keep it, and how to ask for a copy or a deletion.",
+    "What personal data GariGhora collects, why we collect it, who sees it, how long we keep it, and how to ask for a copy or a deletion.",
   path: routes.privacy,
-  keywords: [...keywordGroups.brand, "GhariGhora privacy policy"],
+  keywords: [...keywordGroups.brand, "GariGhora privacy policy"],
   type: "article",
 });
 
@@ -254,7 +254,7 @@ export default function PrivacyPage() {
           webPageSchema({
             type: "WebPage",
             name: "Privacy Policy",
-            description: "What personal data GhariGhora collects, why we collect it, who sees it, how long we keep it, and how to ask for a copy or a deletion.",
+            description: "What personal data GariGhora collects, why we collect it, who sees it, how long we keep it, and how to ask for a copy or a deletion.",
             path: routes.privacy,
           }),
         ]}

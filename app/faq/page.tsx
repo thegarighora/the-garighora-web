@@ -13,7 +13,7 @@ import { breadcrumbSchema, faqSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "FAQ",
   description:
-    "How Return Car is cheaper, when you pay, how drivers are verified, and everything else people ask before their first GhariGhora booking.",
+    "How Return Car is cheaper, when you pay, how drivers are verified, and everything else people ask before their first GariGhora booking.",
   path: routes.faq,
   keywords: [...keywordGroups.brand, ...keywordGroups.returnTrip],
 });

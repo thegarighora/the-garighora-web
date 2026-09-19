@@ -21,9 +21,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "Careers",
   description:
-    "Build the marketplace that stops cars driving home empty. Open roles at GhariGhora in engineering, operations and growth — plus how to apply speculatively.",
+    "Build the marketplace that stops cars driving home empty. Open roles at GariGhora in engineering, operations and growth — plus how to apply speculatively.",
   path: routes.careers,
-  keywords: [...keywordGroups.brand, "jobs at GhariGhora", "startup jobs Dhaka"],
+  keywords: [...keywordGroups.brand, "jobs at GariGhora", "startup jobs Dhaka"],
 });
 
 const whyJoin = [
@@ -100,9 +100,9 @@ export default function CareersPage() {
           // marking up roles that are not genuinely open invites a manual action.
           webPageSchema({
             type: "CollectionPage",
-            name: "Careers at GhariGhora",
+            name: "Careers at GariGhora",
             description:
-              "Open roles in engineering, operations and growth at GhariGhora in Dhaka.",
+              "Open roles in engineering, operations and growth at GariGhora in Dhaka.",
             path: routes.careers,
           }),
         ]}
@@ -221,7 +221,7 @@ export default function CareersPage() {
         title="Not looking for a job, just a ride?"
         description="That works too — the app does both."
         primary={{ label: "Get the App", href: links.appStore }}
-        secondary={{ label: "About GhariGhora", href: routes.about }}
+        secondary={{ label: "About GariGhora", href: routes.about }}
       />
     </>
   );
