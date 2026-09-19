@@ -4,7 +4,7 @@ import {
   renderOgImage,
 } from "@/lib/og-image";
 
-export const alt = "Careers at GhariGhora in Dhaka";
+export const alt = "Careers at GariGhora in Dhaka";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

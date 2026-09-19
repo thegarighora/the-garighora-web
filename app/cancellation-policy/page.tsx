@@ -9,9 +9,9 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "Cancellation Policy",
   description:
-    "How cancellations work on GhariGhora: who can cancel, what gets recorded, and why nobody ends up out of pocket — you only ever pay after the trip.",
+    "How cancellations work on GariGhora: who can cancel, what gets recorded, and why nobody ends up out of pocket — you only ever pay after the trip.",
   path: routes.cancellation,
-  keywords: [...keywordGroups.brand, "GhariGhora cancellation policy"],
+  keywords: [...keywordGroups.brand, "GariGhora cancellation policy"],
   type: "article",
 });
 
@@ -176,7 +176,7 @@ export default function CancellationPolicyPage() {
           webPageSchema({
             type: "WebPage",
             name: "Cancellation Policy",
-            description: "How cancellations work on GhariGhora: who can cancel, what gets recorded, and why nobody ends up out of pocket — you only ever pay after the trip.",
+            description: "How cancellations work on GariGhora: who can cancel, what gets recorded, and why nobody ends up out of pocket — you only ever pay after the trip.",
             path: routes.cancellation,
           }),
         ]}

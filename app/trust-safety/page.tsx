@@ -27,7 +27,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 export const metadata = pageMetadata({
   title: "Trust & Safety",
   description:
-    "How GhariGhora verifies drivers and vehicles, keeps fares honest, assigns a human Gari Bhai to every booking, and handles problems on the road.",
+    "How GariGhora verifies drivers and vehicles, keeps fares honest, assigns a human Gari Bhai to every booking, and handles problems on the road.",
   path: routes.trustSafety,
   keywords: [...keywordGroups.brand, "verified drivers Bangladesh", "safe car rental Dhaka"],
 });
@@ -106,9 +106,9 @@ export default function TrustSafetyPage() {
           breadcrumbSchema([{ name: "Trust & Safety", path: routes.trustSafety }]),
           webPageSchema({
             type: "WebPage",
-            name: "Trust & Safety at GhariGhora",
+            name: "Trust & Safety at GariGhora",
             description:
-              "How GhariGhora verifies drivers and vehicles, keeps fares honest, and supports every booking with a human operations agent.",
+              "How GariGhora verifies drivers and vehicles, keeps fares honest, and supports every booking with a human operations agent.",
             path: routes.trustSafety,
           }),
         ]}

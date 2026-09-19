@@ -24,7 +24,7 @@ const benefits: { icon: LucideIcon; title: string; body: string }[] = [
   {
     icon: PlusCircle,
     title: "Cash in hand, commission later",
-    body: "Passengers pay you directly after the trip. GhariGhora's commission is recorded against the trip and settled separately by bKash, Nagad, bank transfer or cash.",
+    body: "Passengers pay you directly after the trip. GariGhora's commission is recorded against the trip and settled separately by bKash, Nagad, bank transfer or cash.",
   },
 ];
 

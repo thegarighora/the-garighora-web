@@ -19,7 +19,7 @@ concurrency:
 env:
   # Placeholders. `next build` reads these at build time; real values live in
   # the hosting environment, and nothing here talks to a live service.
-  NEXT_PUBLIC_SITE_URL: https://gharighora.com
+  NEXT_PUBLIC_SITE_URL: https://garighora.com
 
 jobs:
   typecheck:

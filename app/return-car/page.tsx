@@ -282,7 +282,7 @@ export default function ReturnCarPage() {
           title="One thing Return Car is not"
         >
           <p>
-            It is not a shared ride and it is not a bus seat. GhariGhora books
+            It is not a shared ride and it is not a bus seat. GariGhora books
             whole vehicles only — you are not put in a car with strangers, and
             there is no per-seat pricing in this version.
           </p>

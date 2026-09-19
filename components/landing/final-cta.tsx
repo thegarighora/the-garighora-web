@@ -65,7 +65,7 @@ export function FinalCta() {
 
         <p className="max-w-xl text-xs leading-relaxed text-brand-on-brand/65">
           Store links are placeholders while the apps go through review. Payment
-          is always collected after the trip is completed — GhariGhora never asks
+          is always collected after the trip is completed — GariGhora never asks
           you to pay in advance.
         </p>
       </div>

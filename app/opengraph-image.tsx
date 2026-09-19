@@ -5,7 +5,7 @@ import {
 } from "@/lib/og-image";
 
 export const alt =
-  "GhariGhora — book a rental car, or ride a driver's empty return leg for less";
+  "GariGhora — book a rental car, or ride a driver's empty return leg for less";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 

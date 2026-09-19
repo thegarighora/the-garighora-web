@@ -24,7 +24,7 @@ export function StatsStrip() {
       />
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
         <h2 id="stats-heading" className="sr-only">
-          GhariGhora by the numbers
+          GariGhora by the numbers
         </h2>
         <dl className="grid grid-cols-2 gap-x-6 gap-y-8 text-center lg:grid-cols-4">
           {stats.map((stat) => (

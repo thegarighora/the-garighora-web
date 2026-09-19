@@ -91,7 +91,7 @@ export function renderOgImage({
             </svg>
           </div>
           <div style={{ display: "flex", fontSize: 34, fontWeight: 700 }}>
-            <span>Ghari</span>
+            <span>Gari</span>
             <span style={{ color: BRAND.amberSoft }}>Ghora</span>
           </div>
         </div>

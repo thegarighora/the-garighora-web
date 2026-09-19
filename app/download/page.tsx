@@ -24,9 +24,9 @@ import {
 export const metadata = pageMetadata({
   title: "Get the App",
   description:
-    "Download the GhariGhora passenger app to book rentals and return trips, or the driver app to take bookings and post your empty return legs.",
+    "Download the GariGhora passenger app to book rentals and return trips, or the driver app to take bookings and post your empty return legs.",
   path: routes.download,
-  keywords: [...keywordGroups.brand, "GhariGhora app", "car booking app Bangladesh"],
+  keywords: [...keywordGroups.brand, "GariGhora app", "car booking app Bangladesh"],
 });
 
 const passengerFeatures = [
@@ -82,13 +82,13 @@ export default function DownloadPage() {
         data={[
           breadcrumbSchema([{ name: "Get the App", path: routes.download }]),
           mobileAppSchema({
-            name: "GhariGhora - Passenger",
+            name: "GariGhora - Passenger",
             description:
               "Book rental cars and discounted return trips with verified drivers across Bangladesh.",
             os: "Android, iOS",
           }),
           mobileAppSchema({
-            name: "GhariGhora - Driver",
+            name: "GariGhora - Driver",
             description:
               "Take rental bookings, post empty return legs, and manage trips, earnings and commission.",
             os: "Android, iOS",

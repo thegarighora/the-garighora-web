@@ -56,7 +56,7 @@ export function Navbar() {
         <Link
           href={routes.home}
           className="rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-          aria-label="GhariGhora home"
+          aria-label="GariGhora home"
         >
           <BrandLogo invert={!solid} />
         </Link>
