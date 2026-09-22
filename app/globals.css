@@ -77,3 +77,22 @@
     }
   }
 }
+
+/* -----------------------------------------------------------------------------
+ * Bengali typography.
+ *
+ * The tracked-out uppercase eyebrows that give the Latin pages their rhythm
+ * actively damage Bangla: the script has no case, and letter spacing pulls
+ * conjuncts and vowel signs away from the consonants they belong to, so
+ * "যাচাই করা চালক" reads as loose glyphs rather than words. Bengali is set with
+ * normal tracking, so it is normalised here rather than by dropping the classes
+ * from thirty components.
+ *
+ * Deliberately unlayered: Tailwind's utilities live in @layer utilities, and
+ * layer order beats specificity, so the same rule inside @layer base would lose
+ * to `tracking-[0.18em]` no matter how specific it was.
+ * -------------------------------------------------------------------------- */
+:root[lang="bn"] :is(.uppercase, [class*="tracking-"]) {
+  text-transform: none;
+  letter-spacing: normal;
+}

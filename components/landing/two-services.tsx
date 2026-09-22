@@ -1,105 +1,29 @@
-import {
-  CalendarClock,
-  Car,
-  CheckCircle2,
-  MessageSquareQuote,
-  Repeat,
-  Search,
-  Send,
-  Wallet,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { cn } from "cn";
 import { Badge } from "@/components/ui/badge";
 import { CtaLink } from "@/components/landing/cta-link";
 import { Section, SectionHeading } from "@/components/landing/section";
 import { ArrowLink } from "@/components/landing/site-link";
-import { links, routes } from "@/lib/site-config";
+import type { Content } from "@/lib/i18n";
 
 /**
  * Two services, equal visual weight. Return Car carries the signature badge but
  * is not styled as an upsell or an add-on — both are first-class products of the
  * same account, same drivers, same vehicles.
  */
+export function TwoServices({ t }: { t: Content }) {
+  const services = t.home.services;
 
-type Service = {
-  id: string;
-  icon: LucideIcon;
-  eyebrow: string;
-  name: string;
-  hook: string;
-  blurb: string;
-  steps: { icon: LucideIcon; text: string }[];
-  /** Sample listing shown at the bottom of the card — illustrative data only. */
-  sample: { label: string; route: string; detail: string; fare: string };
-  cta: { label: string; href: string };
-  /** Dedicated page for this service. */
-  page: { label: string; href: string };
-  signature?: boolean;
-};
-
-const services: Service[] = [
-  {
-    id: "rental-car",
-    icon: Car,
-    eyebrow: "Service 01",
-    name: "Rental Car",
-    hook: "Need a car for your trip?",
-    blurb:
-      "Tell us where you are going and when. Verified drivers send you fare offers, you pick the one you like, and the whole vehicle is yours for the trip.",
-    steps: [
-      { icon: Send, text: "Post your pickup, drop-off, date, time and vehicle type" },
-      { icon: MessageSquareQuote, text: "Compare fare offers from verified drivers" },
-      { icon: CheckCircle2, text: "Book the driver you want — the full car, not a seat" },
-      { icon: Wallet, text: "Pay the driver in cash after the trip is complete" },
-    ],
-    sample: {
-      label: "Sample rental",
-      route: "Dhaka → Sylhet",
-      detail: "Fri, 9:00 AM · Sedan · full vehicle",
-      fare: "৳8,500",
-    },
-    cta: { label: "Book a Rental Car", href: links.passengerSignup },
-    page: { label: "How Rental Car works", href: routes.rentalCar },
-  },
-  {
-    id: "return-car",
-    icon: Repeat,
-    eyebrow: "Service 02",
-    name: "Return Car",
-    hook: "Going where a car is already heading back from?",
-    blurb:
-      "Drivers post the empty leg of a trip they have already been paid for. Search those Return Trips, or post a Ride Request and let drivers come to you with offers.",
-    steps: [
-      { icon: Search, text: "Search Return Trips already posted on your route" },
-      { icon: Send, text: "No match? Post a Ride Request and receive driver offers" },
-      { icon: MessageSquareQuote, text: "Agree the fare in the app — a round or two of offers, no haggling on the phone" },
-      { icon: CalendarClock, text: "Book the whole car at a return-leg price" },
-    ],
-    sample: {
-      label: "Sample return trip",
-      route: "Cumilla → Dhaka Airport",
-      detail: "Today, 6:00 PM · Sedan · full vehicle",
-      fare: "৳1,100",
-    },
-    cta: { label: "Find a Return Car", href: links.passengerSignup },
-    page: { label: "How Return Car works", href: routes.returnCar },
-    signature: true,
-  },
-];
-
-export function TwoServices() {
   return (
     <Section id="services" aria-labelledby="services-heading">
       <SectionHeading
         id="services-heading"
-        eyebrow="Two services, one app"
-        title="Same account, same verified drivers, two ways to ride"
-        description="Log in once and choose what you need. Rental Car covers the trip you are planning; Return Car turns somebody else's finished trip into your cheaper ride."
+        eyebrow={services.eyebrow}
+        title={services.title}
+        description={services.description}
       />
 
       <div className="mt-block grid gap-6 lg:grid-cols-2 lg:gap-8">
-        {services.map((service) => (
+        {services.items.map((service) => (
           <article
             key={service.id}
             id={service.id}
@@ -126,7 +50,7 @@ export function TwoServices() {
               </div>
               {service.signature ? (
                 <Badge className="h-auto bg-gradient-accent px-3 py-1 text-brand-on-brand">
-                  Our signature feature
+                  {services.signatureBadge}
                 </Badge>
               ) : null}
             </div>
@@ -190,8 +114,11 @@ export function TwoServices() {
       </div>
 
       <p className="mt-4 text-center text-sm text-brand-ink-muted">
-        Both services book the <strong className="font-semibold text-brand-ink">whole vehicle</strong>{" "}
-        — GariGhora does not sell individual seats.
+        {services.footnote.before}
+        <strong className="font-semibold text-brand-ink">
+          {services.footnote.strong}
+        </strong>
+        {services.footnote.after}
       </p>
     </Section>
   );
