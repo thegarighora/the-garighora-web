@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "cn";
 import { CtaLink } from "@/components/landing/cta-link";
+import type { Locale } from "@/lib/i18n/config";
+import { localeDigits } from "@/lib/i18n/numerals";
 
 /**
  * Presentational blocks reused across the inner pages, so every page keeps the
@@ -71,9 +73,12 @@ export type NumberedStep = { title: string; body: ReactNode };
 /** Vertical numbered list with a dashed road running down the gutter. */
 export function NumberedList({
   steps,
+  locale,
   className,
 }: {
   steps: NumberedStep[];
+  /** Step numbers follow the page language — ১ ২ ৩ in Bangla. */
+  locale: Locale;
   className?: string;
 }) {
   return (
@@ -87,7 +92,7 @@ export function NumberedList({
             />
           ) : null}
           <span className="z-10 grid size-10 shrink-0 place-items-center rounded-xl bg-gradient-cta text-sm font-semibold text-brand-on-brand shadow-brand-sm">
-            {index + 1}
+            {localeDigits(locale, String(index + 1))}
           </span>
           <div className="flex flex-col gap-1.5 pt-1">
             <h3 className="text-base font-semibold tracking-tight text-brand-ink">

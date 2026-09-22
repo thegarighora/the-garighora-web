@@ -6,13 +6,14 @@ import {
 } from "@/components/ui/accordion";
 import { Section, SectionHeading } from "@/components/landing/section";
 import { ArrowLink, SiteLink } from "@/components/landing/site-link";
-import type { FaqItem } from "@/lib/faq-data";
-import { featuredFaqs } from "@/lib/faq-data";
-import { routes, siteConfig } from "@/lib/site-config";
+import { featuredFaqs, type FaqItem } from "@/lib/faq-data";
+import type { Content } from "@/lib/i18n";
+import { localeDigits } from "@/lib/i18n/numerals";
+import { siteConfig } from "@/lib/site-config";
 
 /**
- * FAQ accordion. Defaults to the short featured set for the home page; the
- * dedicated /faq page passes in a full group instead.
+ * FAQ accordion. The home page passes the short featured set; the dedicated
+ * /faq page passes a full group instead.
  */
 export function FaqAccordion({ items }: { items: FaqItem[] }) {
   return (
@@ -32,31 +33,36 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
 }
 
 /** Home-page FAQ section: the featured questions plus a link to the full page. */
-export function Faq({ items = featuredFaqs }: { items?: FaqItem[] }) {
+export function Faq({ t, items }: { t: Content; items?: FaqItem[] }) {
+  const section = t.home.faqSection;
+  const faqs = items ?? featuredFaqs(t.faqGroups);
+
   return (
     <Section id="faq" tone="surface" aria-labelledby="faq-heading">
       <SectionHeading
         id="faq-heading"
-        eyebrow="FAQ"
-        title="Questions, answered"
-        description="The things people ask most often before their first trip."
+        eyebrow={section.eyebrow}
+        title={section.title}
+        description={section.description}
       />
 
       <div className="mx-auto mt-block max-w-3xl rounded-3xl border border-brand-hairline bg-brand-surface-raised px-5 py-2 shadow-brand-sm sm:px-7">
-        <FaqAccordion items={items} />
+        <FaqAccordion items={faqs} />
       </div>
 
       <div className="mt-4 flex flex-col items-center gap-3">
-        <ArrowLink href={routes.faq}>Read all the questions</ArrowLink>
+        <ArrowLink href={section.moreLink.href}>
+          {section.moreLink.label}
+        </ArrowLink>
         <p className="text-center text-sm text-brand-ink-muted">
-          Still unsure?{" "}
+          {section.stillUnsure.before}
           <SiteLink
             href={`tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`}
             className="font-semibold text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300"
           >
-            {siteConfig.supportPhone}
-          </SiteLink>{" "}
-          reaches a Gari Bhai who will talk you through it.
+            {localeDigits(t.locale, siteConfig.supportPhone)}
+          </SiteLink>
+          {section.stillUnsure.after}
         </p>
       </div>
     </Section>

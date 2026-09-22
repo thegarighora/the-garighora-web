@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { Apple, Globe, Play, Smartphone } from "lucide-react";
+import { Apple, Play, Smartphone } from "lucide-react";
 import { CtaLink } from "@/components/landing/cta-link";
-import { links } from "@/lib/site-config";
+import type { Content } from "@/lib/i18n";
 
 /**
  * Download band. Store badges are link placeholders styled in-house rather than
@@ -9,7 +9,9 @@ import { links } from "@/lib/site-config";
  * TODO: swap for the official App Store / Google Play badge assets and real
  * listing URLs once the apps are published.
  */
-export function FinalCta() {
+export function FinalCta({ t }: { t: Content }) {
+  const cta = t.home.finalCta;
+
   return (
     <section
       id="download"
@@ -27,46 +29,39 @@ export function FinalCta() {
             id="download-heading"
             className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl"
           >
-            Get the app and take the ride that is already going
+            {cta.title}
           </h2>
           <p className="text-base leading-relaxed text-pretty text-brand-on-brand/85 sm:text-lg">
-            One app for passengers, one for drivers. Book a rental, catch a
-            return trip, or start earning on the leg you were driving anyway.
+            {cta.description}
           </p>
         </div>
 
         <div className="flex w-full flex-col items-stretch gap-6 sm:w-auto">
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
             <StoreBadge
-              href={links.appStore}
+              href={cta.appStore.href}
               icon={<Apple aria-hidden="true" />}
-              kicker="Download on the"
-              store="App Store"
+              kicker={cta.appStore.kicker}
+              store={cta.appStore.store}
             />
             <StoreBadge
-              href={links.playStore}
+              href={cta.playStore.href}
               icon={<Play aria-hidden="true" />}
-              kicker="Get it on"
-              store="Google Play"
+              kicker={cta.playStore.kicker}
+              store={cta.playStore.store}
             />
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <CtaLink href={links.driverSignup} tone="onDark">
+            <CtaLink href={cta.driverCta.href} tone="onDark">
               <Smartphone aria-hidden="true" />
-              Become a Driver
-            </CtaLink>
-            <CtaLink href={links.webBooking} tone="ghostOnDark">
-              <Globe aria-hidden="true" />
-              Book from the web instead
+              {cta.driverCta.label}
             </CtaLink>
           </div>
         </div>
 
         <p className="max-w-xl text-xs leading-relaxed text-brand-on-brand/65">
-          Store links are placeholders while the apps go through review. Payment
-          is always collected after the trip is completed — GariGhora never asks
-          you to pay in advance.
+          {cta.footnote}
         </p>
       </div>
     </section>
