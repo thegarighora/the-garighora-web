@@ -1,9 +1,14 @@
 import type { MetadataRoute } from "next";
-import { absoluteUrl } from "@/lib/seo";
+import { locales } from "@/lib/i18n/config";
+import { languageAlternates, localeUrl } from "@/lib/seo";
 import { routes } from "@/lib/site-config";
 
 /**
  * XML sitemap, served at /sitemap.xml and referenced from robots.txt.
+ *
+ * Every page is listed once per locale, each entry carrying the full hreflang
+ * set. Google reads those `xhtml:link` alternates to group the two language
+ * versions as one page rather than two competing ones.
  *
  * Priority and change frequency are set per page rather than uniformly: telling
  * a crawler that a policy page changes as often as the home page wastes crawl
@@ -40,12 +45,15 @@ const entries: Entry[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return entries.map((entry) => ({
-    url: absoluteUrl(entry.path),
-    lastModified,
-    changeFrequency: entry.changeFrequency,
-    priority: entry.priority,
-  }));
+  return entries.flatMap((entry) =>
+    locales.map((locale) => ({
+      url: localeUrl(locale, entry.path),
+      lastModified,
+      changeFrequency: entry.changeFrequency,
+      priority: entry.priority,
+      alternates: { languages: languageAlternates(entry.path) },
+    }))
+  );
 }
 
 /**

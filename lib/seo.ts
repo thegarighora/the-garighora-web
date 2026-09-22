@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import {
+  defaultLocale,
+  localeMeta,
+  localePath,
+  locales,
+  type Locale,
+} from "@/lib/i18n/config";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 
 /**
  * SEO helpers. Every page builds its metadata through `pageMetadata` so that
- * canonical URLs, Open Graph tags and Twitter cards are consistent and
- * impossible to forget.
+ * canonical URLs, hreflang, Open Graph tags and Twitter cards are consistent
+ * and impossible to forget.
  */
 
 /** Turns a route path into an absolute URL on the canonical origin. */
@@ -13,11 +20,33 @@ export function absoluteUrl(path: string) {
   return `${siteUrl}${path === "/" ? "" : path}`;
 }
 
+/** The absolute URL of one unprefixed route in one locale. */
+export function localeUrl(locale: Locale, path: string) {
+  return absoluteUrl(localePath(locale, path));
+}
+
+/**
+ * hreflang map for a page.
+ *
+ * Both languages are real, indexable pages, so each one has to point at the
+ * other — otherwise Google treats them as duplicates and picks one. `x-default`
+ * goes to Bangla, which is what an unmatched visitor should land on.
+ */
+function languageAlternates(path: string) {
+  const languages: Record<string, string> = {};
+  for (const locale of locales) {
+    languages[localeMeta[locale].hreflang] = localeUrl(locale, path);
+  }
+  languages["x-default"] = localeUrl(defaultLocale, path);
+  return languages;
+}
+
 type PageMetadataInput = {
+  locale: Locale;
   /** Short page title. The brand name is appended by the layout template. */
   title: string;
   description: string;
-  /** Route path, e.g. `/return-car`. Used for the canonical URL. */
+  /** Unprefixed route path, e.g. `/return-car`. Localised here. */
   path: string;
   keywords?: string[];
   /** Open Graph type — `article` suits the long-form policy pages. */
@@ -30,6 +59,7 @@ type PageMetadataInput = {
 };
 
 export function pageMetadata({
+  locale,
   title,
   description,
   path,
@@ -37,7 +67,7 @@ export function pageMetadata({
   type = "website",
   noindex = false,
 }: PageMetadataInput): Metadata {
-  const url = absoluteUrl(path);
+  const url = localeUrl(locale, path);
   // Open Graph titles are not run through the layout's title template, so they
   // are spelled out in full here.
   const socialTitle = `${title} · ${siteConfig.name}`;
@@ -46,13 +76,13 @@ export function pageMetadata({
     title,
     description,
     keywords,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: languageAlternates(path) },
     openGraph: {
       title: socialTitle,
       description,
       url,
       siteName: siteConfig.name,
-      locale: siteConfig.locale,
+      locale: localeMeta[locale].ogLocale,
       type,
     },
     twitter: {
@@ -66,37 +96,4 @@ export function pageMetadata({
   };
 }
 
-/**
- * Keyword sets, grouped so a page can compose the ones that apply to it.
- * These are the phrases people in Bangladesh actually search for.
- */
-export const keywordGroups = {
-  brand: ["GariGhora", "Gari Ghora", "Ghori Ghora", "Return Gari"],
-  rental: [
-    "car rental Bangladesh",
-    "rent a car Dhaka",
-    "car hire Dhaka",
-    "intercity car rental Bangladesh",
-    "full car booking Bangladesh",
-  ],
-  returnTrip: [
-    "return car Bangladesh",
-    "return trip car",
-    "empty return car Dhaka",
-    "one way car rental Bangladesh",
-    "cheap car Dhaka to Cumilla",
-  ],
-  routes: [
-    "Dhaka to Cumilla car",
-    "Cumilla to Dhaka car",
-    "Dhaka to Chattogram car rental",
-    "Dhaka to Sylhet car rental",
-    "Dhaka airport car service",
-  ],
-  driver: [
-    "driver jobs Bangladesh",
-    "earn with your car Dhaka",
-    "car owner income Bangladesh",
-    "rent out my car Dhaka",
-  ],
-} as const;
+export { languageAlternates };

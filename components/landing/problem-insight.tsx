@@ -1,61 +1,60 @@
-import { ArrowLeft, ArrowRight, CircleSlash, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { cn } from "cn";
 import { Section, SectionHeading } from "@/components/landing/section";
 import { ArrowLink } from "@/components/landing/site-link";
-import { routes } from "@/lib/site-config";
+import type { Content } from "@/lib/i18n";
 
 /**
  * The insight section: what happens to the return leg today vs what happens on
  * GariGhora. The diagram is built from markup and brand tokens — no images.
  */
 export function ProblemInsight({
+  t,
   moreLink = true,
-}: { moreLink?: boolean } = {}) {
+}: {
+  t: Content;
+  moreLink?: boolean;
+}) {
+  const insight = t.home.insight;
+
   return (
     <Section id="insight" tone="surface" aria-labelledby="insight-heading">
       <SectionHeading
         id="insight-heading"
-        eyebrow="The insight"
+        eyebrow={insight.eyebrow}
         title={
           <>
-            Half of every long trip is already{" "}
-            <span className="text-gradient-brand">wasted</span>
+            {insight.titleLead}
+            <span className="text-gradient-brand">{insight.titleAccent}</span>
           </>
         }
-        description="Every intercity rental has two legs. Only one of them carries a passenger. That empty leg is fuel the driver pays for, hours they do not earn from, and a cheap ride nobody gets to take."
+        description={insight.description}
       />
 
-      {/* Sample route and fares — Dhaka <-> Cumilla figures are illustrative placeholders. */}
+      {/* Sample route and fares — illustrative placeholders. */}
       <div className="mt-block grid gap-6 lg:grid-cols-2 lg:gap-8">
-        <JourneyPanel
-          variant="problem"
-          label="Traditional rental"
-          title="The driver returns empty"
-          outbound={{ note: "Passenger on board", fare: "৳3,200" }}
-          inbound={{ note: "Nobody on board", fare: "৳0 earned" }}
-          takeaway="The driver burns fuel and hours on the way home, so that cost gets baked into every rental fare. Nobody wins."
-        />
-        <JourneyPanel
-          variant="solution"
-          label="With GariGhora"
-          title="The return leg becomes a ride"
-          outbound={{ note: "Passenger on board", fare: "৳3,200" }}
-          inbound={{ note: "Return Car booked", fare: "৳1,100 extra" }}
-          takeaway="The driver posts the empty leg as a Return Car trip. Someone heading the same way books the whole vehicle for a fraction of a normal rental."
-        />
+        {insight.panels.map((panel) => (
+          <JourneyPanel
+            key={panel.variant}
+            origin={insight.origin}
+            destination={insight.destination}
+            {...panel}
+          />
+        ))}
       </div>
 
       <p className="mx-auto mt-5 max-w-2xl rounded-2xl border border-brand-hairline bg-brand-surface-raised px-5 py-4 text-center text-sm leading-relaxed text-brand-ink-muted shadow-brand-sm sm:text-base">
         <span className="font-semibold text-brand-ink">
-          A car is already going that way.
-        </span>{" "}
-        Don&apos;t pay for an empty seat to come back empty.
+          {insight.pullQuote.strong}
+        </span>
+        {insight.pullQuote.rest}
       </p>
 
       {moreLink ? (
         <div className="mt-4 flex justify-center">
-          <ArrowLink href={routes.returnCar}>
-            See how Return Car works
+          <ArrowLink href={insight.moreLink.href}>
+            {insight.moreLink.label}
           </ArrowLink>
         </div>
       ) : null}
@@ -67,15 +66,21 @@ type Leg = { note: string; fare: string };
 
 function JourneyPanel({
   variant,
+  icon: Icon,
   label,
   title,
+  origin,
+  destination,
   outbound,
   inbound,
   takeaway,
 }: {
   variant: "problem" | "solution";
+  icon: LucideIcon;
   label: string;
   title: string;
+  origin: string;
+  destination: string;
   outbound: Leg;
   inbound: Leg;
   takeaway: string;
@@ -100,11 +105,7 @@ function JourneyPanel({
               : "bg-brand-surface text-brand-ink-muted"
           )}
         >
-          {isSolution ? (
-            <Sparkles aria-hidden="true" className="size-4" />
-          ) : (
-            <CircleSlash aria-hidden="true" className="size-4" />
-          )}
+          <Icon aria-hidden="true" className="size-4" />
         </span>
         <span className="text-xs font-semibold tracking-[0.16em] text-brand-ink-muted uppercase">
           {label}
@@ -118,16 +119,16 @@ function JourneyPanel({
       {/* Journey diagram: outbound leg, then the return leg. */}
       <div className="flex flex-col gap-4">
         <JourneyLeg
-          from="Dhaka"
-          to="Cumilla"
+          from={origin}
+          to={destination}
           direction="forward"
           note={outbound.note}
           fare={outbound.fare}
           state="loaded"
         />
         <JourneyLeg
-          from="Cumilla"
-          to="Dhaka"
+          from={destination}
+          to={origin}
           direction="back"
           note={inbound.note}
           fare={inbound.fare}

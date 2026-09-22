@@ -8,7 +8,8 @@ import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/landing/brand-logo";
 import { CtaLink } from "@/components/landing/cta-link";
-import { links, navLinks, routes } from "@/lib/site-config";
+import { LanguageSwitcher } from "@/components/landing/language-switcher";
+import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Sticky navbar, shared by every page through the root layout. It sits
@@ -17,8 +18,34 @@ import { links, navLinks, routes } from "@/lib/site-config";
  *
  * The mobile menu is a plain disclosure: keyboard focusable, `aria-expanded` /
  * `aria-controls` wired up, and closable with Escape.
+ *
+ * Copy arrives as individual props rather than as the whole content bundle,
+ * because this is a client component and the bundle holds formatter functions
+ * that cannot cross that boundary.
  */
-export function Navbar() {
+export function Navbar({
+  locale,
+  homeHref,
+  nav,
+  cta,
+  a11y,
+}: {
+  locale: Locale;
+  homeHref: string;
+  nav: readonly { label: string; href: string }[];
+  cta: {
+    driver: { label: string; href: string };
+    app: { label: string; href: string };
+  };
+  a11y: {
+    homeLink: string;
+    mainNav: string;
+    mobileNav: string;
+    openMenu: string;
+    closeMenu: string;
+    language: string;
+  };
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -54,16 +81,16 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-6 lg:h-18 lg:px-8">
         <Link
-          href={routes.home}
+          href={homeHref}
           className="rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-          aria-label="GariGhora home"
+          aria-label={a11y.homeLink}
         >
           <BrandLogo invert={!solid} />
         </Link>
 
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label={a11y.mainNav} className="hidden lg:block">
           <ul className="flex items-center gap-1">
-            {navLinks.map((link) => {
+            {nav.map((link) => {
               const active = pathname === link.href;
               return (
                 <li key={link.href}>
@@ -86,39 +113,50 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <LanguageSwitcher
+            current={locale}
+            label={a11y.language}
+            tone={solid ? "solid" : "onDark"}
+          />
           <CtaLink
-            href={links.driverSignup}
+            href={cta.driver.href}
             tone={solid ? "outline" : "ghostOnDark"}
             size="sm"
           >
-            Become a Driver
+            {cta.driver.label}
           </CtaLink>
           <CtaLink
-            href={links.appStore}
+            href={cta.app.href}
             tone={solid ? "gradient" : "onDark"}
             size="sm"
           >
-            Get the App
+            {cta.app.label}
           </CtaLink>
         </div>
 
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon-lg"
-          className={cn(
-            "lg:hidden",
-            solid
-              ? "text-brand-ink"
-              : "text-brand-on-brand hover:bg-brand-on-brand/15 hover:text-brand-on-brand"
-          )}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? <X /> : <Menu />}
-        </Button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher
+            current={locale}
+            label={a11y.language}
+            tone={solid ? "solid" : "onDark"}
+          />
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-lg"
+            className={cn(
+              solid
+                ? "text-brand-ink"
+                : "text-brand-on-brand hover:bg-brand-on-brand/15 hover:text-brand-on-brand"
+            )}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? a11y.closeMenu : a11y.openMenu}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X /> : <Menu />}
+          </Button>
+        </div>
       </div>
 
       <div
@@ -126,9 +164,9 @@ export function Navbar() {
         hidden={!open}
         className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-brand-hairline bg-brand-surface-raised px-5 pt-2 pb-6 sm:px-6 lg:hidden"
       >
-        <nav aria-label="Mobile">
+        <nav aria-label={a11y.mobileNav}>
           <ul className="flex flex-col">
-            {navLinks.map((link) => {
+            {nav.map((link) => {
               const active = pathname === link.href;
               return (
                 <li key={link.href}>
@@ -147,21 +185,27 @@ export function Navbar() {
         </nav>
         <div className="mt-4 flex flex-col gap-2">
           <CtaLink
-            href={links.driverSignup}
+            href={cta.driver.href}
             tone="outline"
             block
             onClick={() => setOpen(false)}
           >
-            Become a Driver
+            {cta.driver.label}
           </CtaLink>
           <CtaLink
-            href={links.appStore}
+            href={cta.app.href}
             tone="gradient"
             block
             onClick={() => setOpen(false)}
           >
-            Get the App
+            {cta.app.label}
           </CtaLink>
+          <LanguageSwitcher
+            current={locale}
+            label={a11y.language}
+            size="md"
+            onNavigate={() => setOpen(false)}
+          />
         </div>
       </div>
     </header>
