@@ -1,73 +1,30 @@
-import {
-  BadgeCheck,
-  Headphones,
-  MessagesSquare,
-  PhoneCall,
-  ShieldAlert,
-  Star,
-  Wallet,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Headphones } from "lucide-react";
 import { Section, SectionHeading } from "@/components/landing/section";
 import { ArrowLink, SiteLink } from "@/components/landing/site-link";
-import { routes, siteConfig } from "@/lib/site-config";
-
-type TrustItem = {
-  icon: LucideIcon;
-  title: string;
-  body: string;
-  /** Highlighted card — the human operations layer is our real differentiator. */
-  feature?: boolean;
-};
-
-const trustItems: TrustItem[] = [
-  {
-    icon: BadgeCheck,
-    title: "Verified drivers and vehicles",
-    body: "NID, driving licence and vehicle registration are checked before a driver can accept a single trip. Unverified accounts cannot take bookings.",
-  },
-  {
-    icon: Wallet,
-    title: "Pay only after the trip",
-    body: "No prepayment, no deposit, no card details. You hand the agreed fare to the driver in cash once the trip is finished.",
-  },
-  {
-    icon: MessagesSquare,
-    title: "Fares agreed in the app",
-    body: "Offers and counter-offers happen inside GariGhora and are capped at a couple of rounds. The fare you accept is the fare you pay — no bait-and-switch at the pickup point.",
-  },
-  {
-    icon: PhoneCall,
-    title: "A real person on every booking",
-    body: "Your Gari Bhai — a GariGhora operations agent — is assigned to your booking, calls both you and the driver to confirm the details, and stays reachable until the trip is done.",
-    feature: true,
-  },
-  {
-    icon: Star,
-    title: "Ratings on both sides",
-    body: "Passengers rate drivers and drivers rate passengers after every completed trip. Only completed trips can be reviewed, so ratings mean something.",
-  },
-  {
-    icon: ShieldAlert,
-    title: "Support during the trip",
-    body: "One tap from your active trip screen reaches support, plus a phone number for anything urgent on the road.",
-  },
-];
+import type { Content } from "@/lib/i18n";
+import { localeDigits } from "@/lib/i18n/numerals";
+import { siteConfig } from "@/lib/site-config";
 
 export function TrustSafety({
+  t,
   moreLink = true,
-}: { moreLink?: boolean } = {}) {
+}: {
+  t: Content;
+  moreLink?: boolean;
+}) {
+  const trust = t.home.trust;
+
   return (
     <Section id="trust" aria-labelledby="trust-heading">
       <SectionHeading
         id="trust-heading"
-        eyebrow="Why GariGhora"
-        title="Built so both sides can trust the trip"
-        description="Intercity travel in Bangladesh usually runs on phone calls and word of mouth. We keep the flexibility, and add verification, a recorded fare, and someone accountable on the other end of the line."
+        eyebrow={trust.eyebrow}
+        title={trust.title}
+        description={trust.description}
       />
 
       <ul className="mt-block grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {trustItems.map((item) => (
+        {trust.items.map((item) => (
           <li
             key={item.title}
             className={
@@ -100,21 +57,21 @@ export function TrustSafety({
           <Headphones aria-hidden="true" className="size-5" />
         </span>
         <p className="text-sm leading-relaxed text-brand-ink-muted">
-          Something wrong on the road? Call the support line —{" "}
+          {trust.hotline.before}
           <SiteLink
             href={`tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`}
             className="font-semibold text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300"
           >
-            {siteConfig.supportPhone}
+            {localeDigits(t.locale, siteConfig.supportPhone)}
           </SiteLink>
-          {" "}— and a Gari Bhai will pick it up.
+          {trust.hotline.after}
         </p>
       </div>
 
       {moreLink ? (
         <div className="mt-4 flex justify-center">
-          <ArrowLink href={routes.trustSafety}>
-            How we keep trips safe
+          <ArrowLink href={trust.moreLink.href}>
+            {trust.moreLink.label}
           </ArrowLink>
         </div>
       ) : null}

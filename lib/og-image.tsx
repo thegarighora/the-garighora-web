@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { siteConfig } from "@/lib/site-config";
+import { meta } from "@/lib/i18n/content/en/meta";
 
 /**
  * Shared renderer for the generated Open Graph / Twitter card images.
@@ -8,10 +8,12 @@ import { siteConfig } from "@/lib/site-config";
  * bare URL that does not, and Google shows og:image in Discover. One renderer
  * here keeps every page's card on-brand.
  *
- * Colours are duplicated as literals because Satori (the renderer behind
- * ImageResponse) resolves neither CSS custom properties nor Tailwind classes —
- * it never sees the stylesheet. They mirror the ramps in app/theme.css; update
- * both together if the brand changes.
+ * The cards are English on both locales — see the note in any
+ * `opengraph-image.tsx` for why Satori cannot set Bengali correctly.
+ *
+ * Colours are duplicated as literals because Satori resolves neither CSS custom
+ * properties nor Tailwind classes — it never sees the stylesheet. They mirror
+ * the ramps in app/theme.css; update both together if the brand changes.
  */
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
@@ -148,11 +150,12 @@ export function renderOgImage({
             color: "rgba(248,250,252,0.78)",
           }}
         >
-          <span>Verified drivers</span>
-          <span>·</span>
-          <span>Pay after the trip</span>
-          <span>·</span>
-          <span>{siteConfig.areaServed.country}</span>
+          {meta.ogTrustRow.map((item, index) => (
+            <span key={item} style={{ display: "flex", gap: 28 }}>
+              {index > 0 ? <span>·</span> : null}
+              <span>{item}</span>
+            </span>
+          ))}
         </div>
       </div>
     ),

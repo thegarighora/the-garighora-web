@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { cn } from "cn";
-import { routes } from "@/lib/site-config";
+import type { Content } from "@/lib/i18n";
 
 /**
  * The gradient band that opens every page other than the home page. Keeping one
@@ -10,6 +10,7 @@ import { routes } from "@/lib/site-config";
  * transparently over, and gives every page the same entry rhythm.
  */
 export function PageHero({
+  t,
   eyebrow,
   title,
   description,
@@ -17,10 +18,11 @@ export function PageHero({
   children,
   className,
 }: {
+  t: Content;
   eyebrow?: string;
   title: ReactNode;
   description?: ReactNode;
-  /** Trailing crumb label — "Home /" is prepended automatically. */
+  /** Trailing crumb label — the home crumb is prepended automatically. */
   breadcrumb?: string;
   /** CTAs or supporting content rendered under the description. */
   children?: ReactNode;
@@ -44,14 +46,14 @@ export function PageHero({
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-5 sm:px-6 lg:px-8">
         {breadcrumb ? (
-          <nav aria-label="Breadcrumb">
+          <nav aria-label={t.common.a11y.breadcrumb}>
             <ol className="flex items-center gap-1 text-sm text-brand-on-brand/70">
               <li>
                 <Link
-                  href={routes.home}
+                  href={t.common.routes.home}
                   className="rounded-sm outline-none focus-visible:ring-3 focus-visible:ring-brand-on-brand/60 hover:text-brand-on-brand"
                 >
-                  Home
+                  {t.common.a11y.breadcrumbHome}
                 </Link>
               </li>
               <li aria-hidden="true" className="flex items-center">
