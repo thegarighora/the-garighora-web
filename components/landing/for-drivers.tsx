@@ -1,34 +1,19 @@
-import { ArrowRight, Fuel, PlusCircle, TrendingUp, Users } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { CtaLink } from "@/components/landing/cta-link";
 import { Section, SectionHeading } from "@/components/landing/section";
 import { ArrowLink } from "@/components/landing/site-link";
-import { links, routes } from "@/lib/site-config";
+import type { Content } from "@/lib/i18n";
 
-const benefits: { icon: LucideIcon; title: string; body: string }[] = [
-  {
-    icon: TrendingUp,
-    title: "Earn twice on one journey",
-    body: "The rental fare on the way out, a Return Car fare on the way back. Same fuel, same hours, more income.",
-  },
-  {
-    icon: Fuel,
-    title: "Stop paying to drive home",
-    body: "The return leg costs you fuel whether or not anyone is in the car. Post it and let it pay for itself.",
-  },
-  {
-    icon: Users,
-    title: "Passengers come to you",
-    body: "Ride Requests on your route land in your app. Send an offer with your fare — you decide what a trip is worth.",
-  },
-  {
-    icon: PlusCircle,
-    title: "Cash in hand, commission later",
-    body: "Passengers pay you directly after the trip. GariGhora's commission is recorded against the trip and settled separately by bKash, Nagad, bank transfer or cash.",
-  },
-];
+export function ForDrivers({
+  t,
+  moreLink = true,
+}: {
+  t: Content;
+  moreLink?: boolean;
+}) {
+  const section = t.home.forDrivers;
+  const earnings = section.earnings;
 
-export function ForDrivers({ moreLink = true }: { moreLink?: boolean } = {}) {
   return (
     <Section id="for-drivers" tone="surface" aria-labelledby="drivers-heading">
       <div className="grid items-start gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
@@ -36,13 +21,13 @@ export function ForDrivers({ moreLink = true }: { moreLink?: boolean } = {}) {
           <SectionHeading
             id="drivers-heading"
             align="left"
-            eyebrow="For drivers"
-            title="One trip. Two fares."
-            description="You already drive the empty leg. Post it as a Return Car trip and somebody heading that way pays for the journey you were making anyway."
+            eyebrow={section.eyebrow}
+            title={section.title}
+            description={section.description}
           />
 
           <ul className="grid gap-5 sm:grid-cols-2">
-            {benefits.map((benefit) => (
+            {section.benefits.map((benefit) => (
               <li key={benefit.title} className="flex flex-col gap-2">
                 <span className="grid size-10 place-items-center rounded-xl bg-gradient-cta text-brand-on-brand shadow-brand-sm">
                   <benefit.icon aria-hidden="true" className="size-5" />
@@ -58,18 +43,18 @@ export function ForDrivers({ moreLink = true }: { moreLink?: boolean } = {}) {
           </ul>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <CtaLink href={links.driverSignup} tone="gradient">
-              Register as a Driver
+            <CtaLink href={section.primaryCta.href} tone="gradient">
+              {section.primaryCta.label}
               <ArrowRight />
             </CtaLink>
-            <CtaLink href={links.playStore} tone="outline">
-              Get the Driver App
+            <CtaLink href={section.secondaryCta.href} tone="outline">
+              {section.secondaryCta.label}
             </CtaLink>
           </div>
 
           {moreLink ? (
-            <ArrowLink href={routes.forDrivers}>
-              What drivers need to get started
+            <ArrowLink href={section.moreLink.href}>
+              {section.moreLink.label}
             </ArrowLink>
           ) : null}
         </div>
@@ -86,45 +71,44 @@ export function ForDrivers({ moreLink = true }: { moreLink?: boolean } = {}) {
             id="earnings-heading"
             className="text-lg font-semibold tracking-tight text-brand-ink"
           >
-            What one Dhaka → Cumilla job can look like
+            {earnings.title}
           </h3>
           <p className="mt-1 text-sm text-brand-ink-muted">
-            Sample figures for illustration.
+            {earnings.caption}
           </p>
 
           <dl className="mt-6 flex flex-col gap-3">
             <EarningsRow
-              label="Rental fare, Dhaka → Cumilla"
-              value="৳5,000"
+              label={earnings.outbound.label}
+              value={earnings.outbound.value}
             />
             <EarningsRow
-              label="Return Car fare, Cumilla → Dhaka"
-              value="৳1,100"
+              label={earnings.inbound.label}
+              value={earnings.inbound.value}
               highlight
             />
             <div className="my-1 h-px bg-brand-hairline" />
             <div className="flex items-baseline justify-between gap-3">
               <dt className="text-sm font-semibold text-brand-ink">
-                Total for the same journey
+                {earnings.totalLabel}
               </dt>
               <dd className="text-2xl font-semibold text-brand-primary-800 dark:text-brand-ink">
-                ৳6,100
+                {earnings.totalValue}
               </dd>
             </div>
             <div className="flex items-baseline justify-between gap-3">
               <dt className="text-sm text-brand-ink-muted">
-                Driving back empty
+                {earnings.emptyLabel}
               </dt>
               <dd className="text-base font-medium text-brand-ink-muted line-through">
-                ৳5,000
+                {earnings.emptyValue}
               </dd>
             </div>
           </dl>
 
           <p className="mt-6 rounded-2xl bg-brand-primary-50 px-4 py-3 text-sm leading-relaxed text-brand-primary-800 dark:bg-brand-surface dark:text-brand-ink-muted">
-            <span className="font-semibold">+৳1,100</span> for a drive you were
-            making anyway — and the passenger pays far less than a fresh rental
-            would have cost them.
+            <span className="font-semibold">{earnings.note.strong}</span>
+            {earnings.note.rest}
           </p>
         </aside>
       </div>

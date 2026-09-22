@@ -1,18 +1,16 @@
+import type { Content } from "@/lib/i18n";
+
 /**
  * Social-proof strip.
  *
- * SAMPLE DATA: every number below is a realistic-looking placeholder for
- * layout purposes. Wire these to real reporting figures (or remove the strip)
- * before launch — do not ship invented metrics as fact.
+ * SAMPLE DATA: every number lives in the locale content files and is a
+ * realistic-looking placeholder for layout purposes. Wire these to real
+ * reporting figures (or remove the strip) before launch — do not ship invented
+ * metrics as fact.
  */
-const stats = [
-  { value: "1,200+", label: "Verified drivers" },
-  { value: "18", label: "Cities covered" },
-  { value: "34,000+", label: "Trips completed" },
-  { value: "4.8 / 5", label: "Average driver rating" },
-];
+export function StatsStrip({ t }: { t: Content }) {
+  const stats = t.home.stats;
 
-export function StatsStrip() {
   return (
     <section
       aria-labelledby="stats-heading"
@@ -24,10 +22,10 @@ export function StatsStrip() {
       />
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
         <h2 id="stats-heading" className="sr-only">
-          GariGhora by the numbers
+          {stats.heading}
         </h2>
         <dl className="grid grid-cols-2 gap-x-6 gap-y-8 text-center lg:grid-cols-4">
-          {stats.map((stat) => (
+          {stats.items.map((stat) => (
             <div key={stat.label} className="flex flex-col gap-1">
               <dd className="text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
                 {stat.value}
