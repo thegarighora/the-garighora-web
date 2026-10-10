@@ -66,11 +66,7 @@ export async function generateMetadata({
     },
     description: meta.site.description,
     applicationName: siteConfig.name,
-    keywords: [
-      ...keywords.brand,
-      ...keywords.rental,
-      ...keywords.returnTrip,
-    ],
+    keywords: [...keywords.brand, ...keywords.rental, ...keywords.returnTrip],
     authors: [{ name: siteConfig.name, url: localeUrl(locale, routes.home) }],
     creator: siteConfig.name,
     publisher: siteConfig.name,
@@ -144,18 +140,14 @@ export default async function RootLayout({
   return (
     <html
       lang={localeMeta[locale].htmlLang}
+      data-scroll-behavior="smooth"
       className={cn(
         "h-full",
         "antialiased",
         "font-sans",
         inter.variable,
-        hindSiliguri.variable
+        hindSiliguri.variable,
       )}
-      /**
-       * Per-glyph fallback: whichever family leads, the other covers the script
-       * it lacks, so a Bangla sentence containing "Google Play" never breaks
-       * into tofu and an English page never renders Bengali in a fallback face.
-       */
       style={
         {
           "--font-sans":
@@ -166,7 +158,6 @@ export default async function RootLayout({
       }
     >
       <body className="flex min-h-full flex-col">
-        {/* Site-wide identity graph — referenced by @id from every page's schema. */}
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
 
         <a
