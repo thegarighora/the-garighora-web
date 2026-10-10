@@ -46,6 +46,7 @@ export function organizationSchema() {
     legalName: siteConfig.legalName,
     alternateName: [...siteConfig.altNames],
     url: siteUrl,
+    logo: `${siteUrl}/icons/icon-512.png`,
     description: siteConfig.pitch,
     slogan: siteConfig.tagline,
     areaServed,
