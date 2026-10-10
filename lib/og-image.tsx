@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { meta } from "@/lib/i18n/content/en/meta";
 
 /**
@@ -27,6 +29,10 @@ const BRAND = {
   onBrand: "#f8fafc", // --brand-neutral-50 (brand background)
 };
 
+const LOGO_DATA_URI = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "public/logo/gari-ghora-hor.png")
+).toString("base64")}`;
+
 export function renderOgImage({
   title,
   eyebrow,
@@ -52,50 +58,21 @@ export function renderOgImage({
           fontFamily: "sans-serif",
         }}
       >
-        {/* Brand row */}
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div
+        {/* Brand row — the logo sits on a white chip; its wordmark is black. */}
+        <div style={{ display: "flex" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={LOGO_DATA_URI}
+            alt="Gari Ghora"
+            height={72}
+            width={315}
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 56,
-              height: 56,
-              borderRadius: 16,
-              backgroundColor: "rgba(248,250,252,0.16)",
+              backgroundColor: "#ffffff",
+              borderRadius: 18,
+              padding: "10px 16px",
+              boxSizing: "content-box",
             }}
-          >
-            {/* Drawn rather than typed: the renderer's default font has no
-                glyph for symbols like ⟲, which come out as tofu boxes. */}
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 14.5h16M5.5 14.5 7 9.6A2 2 0 0 1 8.9 8.2h6.2a2 2 0 0 1 1.9 1.4l1.5 4.9"
-                stroke={BRAND.onBrand}
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle cx="8" cy="17" r="1.5" fill={BRAND.onBrand} />
-              <circle cx="16" cy="17" r="1.5" fill={BRAND.onBrand} />
-              <path
-                d="M17.5 4.2a6.5 6.5 0 0 0-11 1.6"
-                stroke={BRAND.amberSoft}
-                strokeWidth="1.7"
-                strokeLinecap="round"
-              />
-              <path
-                d="M6.2 3v3h3"
-                stroke={BRAND.amberSoft}
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div style={{ display: "flex", fontSize: 34, fontWeight: 700 }}>
-            <span>Gari</span>
-            <span style={{ color: BRAND.amberSoft }}>Ghora</span>
-          </div>
+          />
         </div>
 
         {/* Title block */}
