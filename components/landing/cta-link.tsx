@@ -25,7 +25,7 @@ const ctaVariants = cva(
       tone: {
         /** Primary action on a light background. */
         gradient:
-          "bg-gradient-cta text-brand-on-brand shadow-brand focus-visible:ring-brand-primary-400/60 hover:shadow-brand-lg",
+          "bg-gradient-cta text-brand-on-primary shadow-brand focus-visible:ring-brand-primary-400/60 hover:shadow-brand-lg",
         /** Primary action on a gradient / dark background. */
         onDark:
           "bg-brand-on-brand text-brand-primary-800 shadow-brand focus-visible:ring-brand-on-brand/60 hover:bg-brand-on-brand/90",

@@ -120,8 +120,8 @@ export const viewport: Viewport = {
   themeColor: [
     // Matches --brand-neutral-50 (page ground) / --brand-neutral-950 (dark
     // page ground) in app/theme.css.
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#020617" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f9fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#080d14" },
   ],
 };
 

@@ -21,12 +21,12 @@ export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
 
 const BRAND = {
-  deepTeal: "#042f2e", // --brand-primary-950
-  teal: "#0f766e", // --brand-primary-700 (brand primary)
-  midTeal: "#0d9488", // --brand-primary-600
-  amber: "#f59e0b", // --brand-secondary-500 (brand accent)
-  amberSoft: "#fcd34d", // --brand-secondary-300
-  onBrand: "#f8fafc", // --brand-neutral-50 (brand background)
+  deepBlue: "#082f49", // --brand-primary-950
+  blue: "#0369a1", // --brand-primary-700 (brand primary)
+  midBlue: "#0e92c4", // --brand-primary-600
+  amber: "#f7941d", // --brand-secondary-500 (brand accent)
+  amberSoft: "#fdba74", // --brand-secondary-300
+  onBrand: "#f6f9fc", // --brand-neutral-50 (brand background)
 };
 
 const LOGO_DATA_URI = `data:image/png;base64,${readFileSync(
@@ -52,8 +52,8 @@ export function renderOgImage({
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          backgroundColor: BRAND.deepTeal,
-          backgroundImage: `linear-gradient(135deg, ${BRAND.deepTeal} 0%, ${BRAND.teal} 40%, ${BRAND.midTeal} 66%, ${BRAND.amber} 100%)`,
+          backgroundColor: BRAND.deepBlue,
+          backgroundImage: `linear-gradient(135deg, ${BRAND.deepBlue} 0%, ${BRAND.blue} 40%, ${BRAND.midBlue} 66%, ${BRAND.amber} 100%)`,
           color: BRAND.onBrand,
           fontFamily: "sans-serif",
         }}
