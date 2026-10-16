@@ -17,10 +17,9 @@
  *
  * Set NEXT_PUBLIC_SITE_URL in the deployment environment; the fallback is the
  * production domain.
- * TODO: confirm the final production domain.
  */
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://garighora.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://thegarighora.com"
 ).replace(/\/$/, "");
 
 export const siteConfig = {
@@ -28,7 +27,16 @@ export const siteConfig = {
   /** Legal entity name used in structured data. TODO: confirm registered name. */
   legalName: "GariGhora Ltd.",
   /** Latin spelling varies in the wild; kept here so copy stays consistent. */
-  altNames: ["Ghori Ghora", "Gari Ghora", "Return Gari"],
+  altNames: [
+    "The GariGhora",
+    "Gari Ghora",
+    "Ghari Ghora",
+    "GhariGhora",
+    "Ghori Ghora",
+    "Return Gari",
+    "গাড়িঘোড়া",
+    "গাড়ী ঘোড়া",
+  ],
   tagline: "A car is already going that way.",
   pitch:
     "A car is already going that way — don't pay for an empty seat to come back empty.",

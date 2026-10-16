@@ -3,7 +3,8 @@ import { common } from "@/lib/i18n/content/bn/common";
 import { faqGroups } from "@/lib/i18n/content/bn/faq";
 import { home } from "@/lib/i18n/content/bn/home";
 import { legal } from "@/lib/i18n/content/bn/legal";
-import { keywords, meta } from "@/lib/i18n/content/bn/meta";
+import { keywords } from "@/lib/i18n/content/bn/keywords";
+import { meta } from "@/lib/i18n/content/bn/meta";
 import { pages } from "@/lib/i18n/content/bn/pages";
 import type { en } from "@/lib/i18n/content/en";
 
