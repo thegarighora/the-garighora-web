@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { cn } from "cn";
 
+const LOGO = { width: 2227, height: 509, sizes: "160px" };
+
 /**
- * The wordmark is black, so it sits on a white chip wherever the surface is a
- * gradient (`invert`) or dark mode.
+ * The black-wordmark logo suits light surfaces; the white-wordmark variant is
+ * used on the hero gradient (`invert`) and in dark mode.
  */
 export function BrandLogo({
   className,
@@ -13,21 +15,21 @@ export function BrandLogo({
   invert?: boolean;
 }) {
   return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-xl dark:bg-white dark:px-2 dark:py-1",
-        invert && "bg-white px-2 py-1 shadow-brand-sm",
-        className
-      )}
-    >
+    <span className={cn("inline-flex items-center", className)}>
       <Image
+        {...LOGO}
         src="/logo/gari-ghora-hor.png"
         alt="Gari Ghora"
-        width={2227}
-        height={509}
         priority
-        sizes="160px"
-        className="h-8 w-auto"
+        className={cn("h-8 w-auto", invert ? "hidden" : "dark:hidden")}
+      />
+      <Image
+        {...LOGO}
+        src="/logo/gari-ghora-hor-light.png"
+        alt=""
+        aria-hidden="true"
+        priority
+        className={cn("h-8 w-auto", invert ? "block" : "hidden dark:block")}
       />
     </span>
   );

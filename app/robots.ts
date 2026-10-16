@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/seo";
-import { siteUrl } from "@/lib/site-config";
 
 /**
- * robots.txt. Everything public is crawlable; only Next's build assets and the
- * API surface are excluded, and the sitemap is advertised so crawlers find the
- * full route list on the first visit.
+ * robots.txt. Everything public is crawlable; only the API surface is
+ * excluded. Next's JS and CSS stay crawlable on purpose, because Google needs
+ * them to render the pages. The sitemap is advertised so crawlers find the full
+ * route list on the first visit.
  */
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -13,10 +13,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/static/chunks/"],
+        disallow: ["/api/"],
       },
     ],
     sitemap: absoluteUrl("/sitemap.xml"),
-    host: siteUrl,
   };
 }

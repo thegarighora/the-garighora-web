@@ -8,7 +8,7 @@
  *
  * HOW TO RESTYLE THE WHOLE SITE
  * -----------------------------
- * 1. Rebrand the palette ....... edit the `--brand-primary-*` (teal / road),
+ * 1. Rebrand the palette ....... edit the `--brand-primary-*` (sky blue / logo),
  *                                `--brand-secondary-*` (amber / sunset) and
  *                                `--brand-neutral-*` (slate) ramps in the
  *                                ":root — BRAND RAMPS" block. Everything else
@@ -52,56 +52,56 @@
 
 /* --------------------------------------------------------------------------
  * :root — BRAND RAMPS
- * "Highway Teal" (the road) travelling into "Sunset Amber" (the return leg).
- * Deliberately warm and earthy rather than a generic SaaS violet/blue.
+ * "Sky Blue" (the logo pin) travelling into "Taxi Orange" (the return leg),
+ * on navy-tinted neutrals taken from the logo.
  *
  * The five values marked ← BRAND are the official GariGhora palette; every
  * other step in a ramp exists only to shade around them.
  *
- *   Primary     #0F766E   teal
+ *   Primary     #0369A1   sky blue (logo pin #27B4E1 sits at 500)
  *   Accent      #F59E0B   amber
- *   Background  #F8FAFC   slate
- *   Text        #0F172A   slate
- *   Secondary   #64748B   slate
+ *   Background  #F6F9FC   navy slate
+ *   Text        #101823   navy ink (logo)
+ *   Secondary   #5F6C80   navy slate
  * ------------------------------------------------------------------------ */
 :root {
-  /* Highway Teal — primary */
-  --brand-primary-50: #f0fdfa;
-  --brand-primary-100: #ccfbf1;
-  --brand-primary-200: #99f6e4;
-  --brand-primary-300: #5eead4;
-  --brand-primary-400: #2dd4bf;
-  --brand-primary-500: #14b8a6;
-  --brand-primary-600: #0d9488;
-  --brand-primary-700: #0f766e; /* ← BRAND primary */
-  --brand-primary-800: #115e59;
-  --brand-primary-900: #134e4a;
-  --brand-primary-950: #042f2e;
+  /* Sky Blue — primary (the logo pin) */
+  --brand-primary-50: #f0f9ff;
+  --brand-primary-100: #e0f2fe;
+  --brand-primary-200: #bae6fd;
+  --brand-primary-300: #7dd3fc;
+  --brand-primary-400: #38bdf8;
+  --brand-primary-500: #27b4e1; /* ← BRAND primary (logo pin) */
+  --brand-primary-600: #0e92c4;
+  --brand-primary-700: #0369a1; /* darker shade for text on light surfaces */
+  --brand-primary-800: #075985;
+  --brand-primary-900: #0c4a6e;
+  --brand-primary-950: #082f49;
 
-  /* Sunset Amber — secondary / accent */
-  --brand-secondary-50: #fffbeb;
-  --brand-secondary-100: #fef3c7;
-  --brand-secondary-200: #fde68a;
-  --brand-secondary-300: #fcd34d;
-  --brand-secondary-400: #fbbf24;
-  --brand-secondary-500: #f59e0b; /* ← BRAND accent */
-  --brand-secondary-600: #d97706;
-  --brand-secondary-700: #b45309;
-  --brand-secondary-800: #92400e;
-  --brand-secondary-900: #78350f;
+  /* Taxi Orange — secondary / accent, the complement of the logo blue */
+  --brand-secondary-50: #fff7ed;
+  --brand-secondary-100: #ffedd5;
+  --brand-secondary-200: #fed7aa;
+  --brand-secondary-300: #fdba74;
+  --brand-secondary-400: #fb923c;
+  --brand-secondary-500: #f7941d; /* ← BRAND accent */
+  --brand-secondary-600: #ea6a0a;
+  --brand-secondary-700: #c2500a;
+  --brand-secondary-800: #9a3d0c;
+  --brand-secondary-900: #7c320d;
 
-  /* Slate — the neutral ramp behind text, surfaces and hairlines */
-  --brand-neutral-50: #f8fafc; /* ← BRAND background */
-  --brand-neutral-100: #f1f5f9;
-  --brand-neutral-200: #e2e8f0;
-  --brand-neutral-300: #cbd5e1;
-  --brand-neutral-400: #94a3b8;
-  --brand-neutral-500: #64748b; /* ← BRAND secondary */
-  --brand-neutral-600: #475569;
-  --brand-neutral-700: #334155;
-  --brand-neutral-800: #1e293b;
-  --brand-neutral-900: #0f172a; /* ← BRAND text */
-  --brand-neutral-950: #020617;
+  /* Navy slate — the neutral ramp behind text, surfaces and hairlines */
+  --brand-neutral-50: #f6f9fc; /* ← BRAND background */
+  --brand-neutral-100: #eef2f7;
+  --brand-neutral-200: #dde4ed;
+  --brand-neutral-300: #c3cdda;
+  --brand-neutral-400: #8d9aad;
+  --brand-neutral-500: #5f6c80; /* ← BRAND secondary */
+  --brand-neutral-600: #465265;
+  --brand-neutral-700: #2f3a4c;
+  --brand-neutral-800: #1c2535;
+  --brand-neutral-900: #101823; /* ← BRAND text */
+  --brand-neutral-950: #080d14;
 
   /* Signal green — outside the brand palette, reserved for semantic
    * "verified / paid / trust" affirmations (the counterpart to --destructive). */
@@ -113,7 +113,7 @@
   /* Shorthand aliases — the names the brand system speaks in.
    * `accent` and `secondary` are the same amber; both names are kept because
    * the palette calls it the accent and the ramp is named secondary. */
-  --brand-primary: var(--brand-primary-700);
+  --brand-primary: var(--brand-primary-500);
   --brand-secondary: var(--brand-secondary-500);
   --brand-accent: var(--brand-secondary-500);
 
@@ -124,32 +124,33 @@
   --brand-surface-raised: #ffffff;
   --brand-hairline: var(--brand-neutral-200);
   --brand-on-brand: var(--brand-neutral-50);
+  /* Text on solid sky blue: white is only ~2.4:1 there, navy is ~7:1. */
+  --brand-on-primary: var(--brand-neutral-900);
 
   /* Fixed shadow tint. Deliberately NOT var(--brand-ink): that flips light in
    * dark mode and would turn every shadow into a white glow. */
-  --brand-shadow-tint: #0f172a;
+  --brand-shadow-tint: #101823;
 
   /* ------------------------------------------------------------------------
    * :root — GRADIENTS
    * Change these to restyle every hero, CTA and section band on the site.
    * ---------------------------------------------------------------------- */
-  /* Stops step through lightness gradually — a single teal-to-amber jump shows
+  /* Stops step through lightness gradually — a single blue-to-amber jump shows
    * a visible chroma band on wide screens. */
   --gradient-hero: linear-gradient(
     145deg in oklab,
-    var(--brand-primary-950) 0%,
-    var(--brand-primary-800) 30%,
-    var(--brand-primary-600) 55%,
-    var(--brand-secondary-600) 82%,
-    var(--brand-secondary-500) 100%
+    var(--brand-neutral-900) 0%,
+    var(--brand-primary-900) 32%,
+    var(--brand-primary-700) 62%,
+    var(--brand-primary-500) 88%,
+    var(--brand-primary-400) 100%
   );
-  /* Amber is held to the far edge: centred white button text sits over the teal
-   * end, which clears AA. White on #F59E0B is only ~1.9:1 and never would. */
+  /* Navy text (--brand-on-primary) sits on this, not white: white on the logo
+   * blue is only ~2.4:1. */
   --gradient-cta: linear-gradient(
     100deg in oklab,
-    var(--brand-primary-800) 0%,
-    var(--brand-primary-600) 62%,
-    var(--brand-secondary-600) 100%
+    var(--brand-primary-500) 0%,
+    var(--brand-primary-400) 100%
   );
   --gradient-card: linear-gradient(
     160deg in oklab,
@@ -159,7 +160,7 @@
   );
   /* Used for gradient-filled words in headlines. Deliberately stays inside the
    * amber ramp: a short word only shows a slice of a gradient, and a
-   * teal-to-amber ramp lands its low-chroma midpoint in the middle of the word.
+   * blue-to-amber ramp lands its low-chroma midpoint in the middle of the word.
    * Both ends clear 3:1 on light surfaces (AA for large text). */
   --gradient-text: linear-gradient(
     92deg in oklab,
@@ -196,7 +197,7 @@
    * shadcn component (Button, Card, Badge, Tabs, Accordion) inherits the brand
    * automatically instead of the default neutral greys.
    * ---------------------------------------------------------------------- */
-  /* The palette's Background #F8FAFC is the page ground; white is reserved for
+  /* The palette's Background #F6F9FC is the page ground; white is reserved for
    * raised surfaces (cards, popovers) so they read as lifted off it. */
   --background: var(--brand-surface);
   --foreground: var(--brand-ink);
@@ -204,8 +205,8 @@
   --card-foreground: var(--brand-ink);
   --popover: var(--brand-surface-raised);
   --popover-foreground: var(--brand-ink);
-  --primary: var(--brand-primary-700);
-  --primary-foreground: var(--brand-on-brand);
+  --primary: var(--brand-primary-500);
+  --primary-foreground: var(--brand-on-primary);
   --secondary: var(--brand-primary-50);
   --secondary-foreground: var(--brand-primary-800);
   --muted: var(--brand-neutral-100);
@@ -226,8 +227,8 @@
   --chart-5: var(--brand-success-600);
   --sidebar: var(--brand-surface);
   --sidebar-foreground: var(--brand-ink);
-  --sidebar-primary: var(--brand-primary-700);
-  --sidebar-primary-foreground: var(--brand-on-brand);
+  --sidebar-primary: var(--brand-primary-500);
+  --sidebar-primary-foreground: var(--brand-on-primary);
   --sidebar-accent: var(--brand-primary-50);
   --sidebar-accent-foreground: var(--brand-primary-800);
   --sidebar-border: var(--brand-hairline);
@@ -242,7 +243,7 @@
   --brand-secondary: var(--brand-secondary-400);
   --brand-accent: var(--brand-secondary-400);
 
-  /* The brand's Text #0F172A becomes the page ground here, and the ramp is read
+  /* The brand's Text #101823 becomes the page ground here, and the ramp is read
    * from the other end: slate-100 ink on a slate-900 / slate-800 surface stack. */
   --brand-ink: var(--brand-neutral-100);
   --brand-ink-muted: var(--brand-neutral-400);
@@ -283,8 +284,8 @@
   --card-foreground: var(--brand-ink);
   --popover: var(--brand-surface-raised);
   --popover-foreground: var(--brand-ink);
-  --primary: var(--brand-primary-300);
-  --primary-foreground: var(--brand-on-brand);
+  --primary: var(--brand-primary-500);
+  --primary-foreground: var(--brand-on-primary);
   --secondary: rgb(248 250 252 / 8%);
   --secondary-foreground: var(--brand-ink);
   --muted: var(--brand-surface-raised);
@@ -364,6 +365,7 @@
   --color-brand-surface-raised: var(--brand-surface-raised);
   --color-brand-hairline: var(--brand-hairline);
   --color-brand-on-brand: var(--brand-on-brand);
+  --color-brand-on-primary: var(--brand-on-primary);
 
   --shadow-brand: var(--shadow-brand-md);
   --shadow-brand-sm: var(--shadow-brand-sm);
