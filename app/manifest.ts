@@ -21,8 +21,8 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     display: "standalone",
     // Matches --brand-neutral-50 / --brand-primary-700 in app/theme.css.
-    background_color: "#f8fafc",
-    theme_color: "#0f766e",
+    background_color: "#f6f9fc",
+    theme_color: "#27b4e1",
     lang: localeMeta[defaultLocale].htmlLang,
     dir: "ltr",
     categories: ["travel", "transportation"],
