@@ -2,6 +2,7 @@ import type { FaqItem } from "@/lib/faq-data";
 import { localeMeta, type Locale } from "@/lib/i18n/config";
 import { localeUrl } from "@/lib/seo";
 import { routes, siteConfig, siteUrl } from "@/lib/site-config";
+import type { SiteSettings } from "@/lib/site-settings";
 
 /**
  * schema.org JSON-LD builders.
@@ -37,7 +38,12 @@ const areaServed = [
   })),
 ];
 
-export function organizationSchema() {
+/**
+ * Takes the admin-managed settings rather than reading them itself, so the
+ * contact point and `sameAs` profiles are always the ones the footer shows —
+ * search engines connect the site to its profiles by that match.
+ */
+export function organizationSchema(site: SiteSettings) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -59,18 +65,15 @@ export function organizationSchema() {
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        telephone: siteConfig.supportPhone,
-        email: siteConfig.supportEmail,
+        telephone: site.supportPhone,
+        email: site.supportEmail,
         areaServed: siteConfig.areaServed.countryCode,
         availableLanguage: ["Bengali", "English"],
       },
     ],
-    sameAs: [
-      siteConfig.social.facebook,
-      siteConfig.social.instagram,
-      siteConfig.social.youtube,
-      siteConfig.social.linkedin,
-    ],
+    sameAs: Object.values(site.social).filter(
+      (href): href is string => href !== null
+    ),
   };
 }
 

@@ -10,6 +10,7 @@ import { resolveLocale, type LocaleParams } from "@/lib/i18n/page";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
 import { routes, siteConfig } from "@/lib/site-config";
+import { displayPhone, getSiteSettings, telHref } from "@/lib/site-settings";
 
 const linkClass =
   "font-medium text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300";
@@ -32,9 +33,10 @@ export default async function ContactPage({ params }: LocaleParams) {
   const page = t.pages.contact;
   const meta = t.meta.contact;
 
-  const tel = `tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`;
-  const mailto = `mailto:${siteConfig.supportEmail}`;
-  const phone = localeDigits(locale, siteConfig.supportPhone);
+  const site = await getSiteSettings();
+  const tel = telHref(site.supportPhone);
+  const mailto = `mailto:${site.supportEmail}`;
+  const phone = localeDigits(locale, displayPhone(site.supportPhone));
 
   /**
    * Each channel's destination depends on what it is, not on the language, so
@@ -45,9 +47,9 @@ export default async function ContactPage({ params }: LocaleParams) {
     { label: string; href: string }
   > = {
     phone: { label: phone, href: tel },
-    email: { label: siteConfig.supportEmail, href: mailto },
+    email: { label: site.supportEmail, href: mailto },
     drivers: { label: "", href: t.common.routes.forDrivers },
-    press: { label: siteConfig.supportEmail, href: mailto },
+    press: { label: site.supportEmail, href: mailto },
   };
 
   return (
@@ -181,7 +183,7 @@ export default async function ContactPage({ params }: LocaleParams) {
               <p>
                 {siteConfig.name}
                 <br />
-                {t.common.brand.address}
+                {site.address[locale]}
               </p>
               <p className="mt-2 text-xs">{page.report.where.note}</p>
             </InfoCard>
@@ -193,10 +195,10 @@ export default async function ContactPage({ params }: LocaleParams) {
               <p>
                 {page.report.privacy.before}
                 <SiteLink
-                  href={`mailto:${siteConfig.privacyEmail}`}
+                  href={`mailto:${site.privacyEmail}`}
                   className={linkClass}
                 >
-                  {siteConfig.privacyEmail}
+                  {site.privacyEmail}
                 </SiteLink>
                 {page.report.privacy.middle}
                 <SiteLink href={t.common.routes.privacy} className={linkClass}>

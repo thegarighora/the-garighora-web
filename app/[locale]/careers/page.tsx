@@ -12,7 +12,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { resolveLocale, type LocaleParams } from "@/lib/i18n/page";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
-import { routes, siteConfig } from "@/lib/site-config";
+import { routes } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export async function generateMetadata({ params }: LocaleParams) {
   const { locale, t } = await resolveLocale(params);
@@ -31,6 +32,7 @@ export default async function CareersPage({ params }: LocaleParams) {
   const { locale, t } = await resolveLocale(params);
   const page = t.pages.careers;
   const meta = t.meta.careers;
+  const { careersEmail } = await getSiteSettings();
 
   return (
     <>
@@ -58,7 +60,7 @@ export default async function CareersPage({ params }: LocaleParams) {
         title={page.hero.title}
         description={page.hero.description}
       >
-        <CtaLink href={`mailto:${siteConfig.careersEmail}`} tone="onDark">
+        <CtaLink href={`mailto:${careersEmail}`} tone="onDark">
           <Mail aria-hidden="true" />
           {page.hero.cta}
         </CtaLink>
@@ -112,7 +114,7 @@ export default async function CareersPage({ params }: LocaleParams) {
               </div>
 
               <CtaLink
-                href={`mailto:${siteConfig.careersEmail}?subject=${encodeURIComponent(
+                href={`mailto:${careersEmail}?subject=${encodeURIComponent(
                   page.roles.applySubject(role.title)
                 )}`}
                 tone="outline"
@@ -151,10 +153,10 @@ export default async function CareersPage({ params }: LocaleParams) {
             <p className="mt-4">
               {page.apply.sendBefore}
               <SiteLink
-                href={`mailto:${siteConfig.careersEmail}`}
+                href={`mailto:${careersEmail}`}
                 className="font-medium text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300"
               >
-                {siteConfig.careersEmail}
+                {careersEmail}
               </SiteLink>
               {page.apply.sendAfter}
             </p>
