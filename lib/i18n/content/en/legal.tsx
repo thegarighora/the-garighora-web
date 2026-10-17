@@ -1,4 +1,8 @@
 import type { LegalSection } from "@/components/landing/legal";
+import {
+  PrivacyEmailLink,
+  SupportEmailLink,
+} from "@/components/landing/contact-links";
 import { SiteLink } from "@/components/landing/site-link";
 import { common } from "@/lib/i18n/content/en/common";
 import { siteConfig } from "@/lib/site-config";
@@ -305,12 +309,7 @@ export const legal = {
             </p>
             <p>
               Questions about these terms can go to{" "}
-              <SiteLink
-                href={`mailto:${siteConfig.supportEmail}`}
-                className={linkClass}
-              >
-                {siteConfig.supportEmail}
-              </SiteLink>{" "}
+              <SupportEmailLink className={linkClass} />{" "}
               or through the{" "}
               <SiteLink href={routes.contact} className={linkClass}>
                 contact page
@@ -523,12 +522,7 @@ export const legal = {
             </ul>
             <p>
               To make a request, write to{" "}
-              <SiteLink
-                href={`mailto:${siteConfig.privacyEmail}`}
-                className={linkClass}
-              >
-                {siteConfig.privacyEmail}
-              </SiteLink>
+              <PrivacyEmailLink className={linkClass} />
               . We may need to verify your identity before acting on it.
             </p>
           </>
@@ -574,12 +568,7 @@ export const legal = {
             </p>
             <p>
               Privacy questions go to{" "}
-              <SiteLink
-                href={`mailto:${siteConfig.privacyEmail}`}
-                className={linkClass}
-              >
-                {siteConfig.privacyEmail}
-              </SiteLink>
+              <PrivacyEmailLink className={linkClass} />
               ; anything else can go through the{" "}
               <SiteLink href={routes.contact} className={linkClass}>
                 contact page

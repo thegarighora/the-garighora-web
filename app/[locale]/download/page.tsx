@@ -1,4 +1,5 @@
 import { FeatureGrid, InfoCard } from "@/components/landing/blocks";
+import { SupportEmailLink } from "@/components/landing/contact-links";
 import { FinalCta } from "@/components/landing/final-cta";
 import { PageHero } from "@/components/landing/page-hero";
 import { Section, SectionHeading } from "@/components/landing/section";
@@ -7,7 +8,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { resolveLocale, type LocaleParams } from "@/lib/i18n/page";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, mobileAppSchema } from "@/lib/structured-data";
-import { routes, siteConfig } from "@/lib/site-config";
+import { routes } from "@/lib/site-config";
 
 const linkClass =
   "font-medium text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300";
@@ -84,12 +85,7 @@ export default async function DownloadPage({ params }: LocaleParams) {
         >
           <p>
             {page.driver.waitlist.before}
-            <SiteLink
-              href={`mailto:${siteConfig.supportEmail}`}
-              className={linkClass}
-            >
-              {siteConfig.supportEmail}
-            </SiteLink>
+            <SupportEmailLink className={linkClass} />
             {page.driver.waitlist.middle}
             <SiteLink href={t.common.routes.contact} className={linkClass}>
               {page.driver.waitlist.contactLabel}
