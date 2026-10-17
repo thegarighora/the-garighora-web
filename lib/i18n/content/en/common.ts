@@ -21,8 +21,6 @@ export const common = {
       "A car is already going that way — don't pay for an empty seat to come back empty.",
     /** The wordmark is split so the second half can take the accent colour. */
     wordmark: { first: "Gari", second: "Ghora" },
-    /** Where we are, as a reader should see it written. */
-    address: "Dhaka, Bangladesh",
   },
 
   a11y: {
@@ -53,9 +51,12 @@ export const common = {
     getApp: "Get the App",
   },
 
+  /**
+   * The footer's blurb, address and disclaimer are edited in the admin panel
+   * and read through lib/site-settings, alongside the contacts and social
+   * links. Only the chrome that belongs to this site's own pages stays here.
+   */
   footer: {
-    blurb:
-      "Rental Car and Return Car in one app. A car is already going that way — don't pay for an empty seat to come back empty.",
     columns: [
       {
         heading: "Company",
@@ -95,8 +96,6 @@ export const common = {
       },
     ],
     rights: (year: string) => `© ${year} ${siteConfig.name}. All rights reserved.`,
-    disclaimer:
-      "Fares shown across this site are sample figures. Payment is collected after the trip is completed.",
     social: {
       facebook: "GariGhora on Facebook",
       instagram: "GariGhora on Instagram",

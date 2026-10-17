@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { BrandLogo } from "@/components/landing/brand-logo";
+import {
+  SupportEmailLink,
+  SupportPhoneLink,
+} from "@/components/landing/contact-links";
 import { SiteLink } from "@/components/landing/site-link";
 import {
   FacebookIcon,
@@ -10,42 +14,48 @@ import {
 } from "@/components/landing/social-icons";
 import type { Content } from "@/lib/i18n";
 import { localeDigits } from "@/lib/i18n/numerals";
-import { siteConfig } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/site-settings";
 
 const linkClass =
   "text-sm text-brand-ink-muted hover:text-brand-primary-700 dark:hover:text-brand-primary-300";
 
-export function Footer({ t }: { t: Content }) {
-  const { footer, a11y, routes, brand } = t.common;
+/**
+ * The company details here — blurb, contacts, address, disclaimer and social
+ * links — are edited by an administrator in the admin panel and read through
+ * lib/site-settings. The link columns stay in code, because each one is a page
+ * that exists in this site.
+ */
+export async function Footer({ t }: { t: Content }) {
+  const { footer, a11y, routes } = t.common;
+  const site = await getSiteSettings();
 
   /**
-   * Social profiles. The URLs come from site-config so they stay identical to
-   * the `sameAs` list in the Organization schema — search engines use that
-   * match to connect the site to its profiles.
-   * TODO: confirm the handles once the accounts exist.
+   * Social profiles. The same values feed the `sameAs` list in the
+   * Organization schema, so search engines can connect the site to its
+   * profiles. One an administrator has emptied is left out entirely.
    */
   const socials = [
     {
       label: footer.social.facebook,
       icon: FacebookIcon,
-      href: siteConfig.social.facebook,
+      href: site.social.facebook,
     },
     {
       label: footer.social.instagram,
       icon: InstagramIcon,
-      href: siteConfig.social.instagram,
+      href: site.social.instagram,
     },
     {
       label: footer.social.youtube,
       icon: YoutubeIcon,
-      href: siteConfig.social.youtube,
+      href: site.social.youtube,
     },
     {
       label: footer.social.linkedin,
       icon: LinkedinIcon,
-      href: siteConfig.social.linkedin,
+      href: site.social.linkedin,
     },
-  ];
+  ].flatMap(({ href, ...social }) => (href ? [{ ...social, href }] : []));
 
   const year = localeDigits(t.locale, String(new Date().getFullYear()));
 
@@ -62,30 +72,27 @@ export function Footer({ t }: { t: Content }) {
               <BrandLogo />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-brand-ink-muted">
-              {footer.blurb}
+              {site.blurb[t.locale]}
             </p>
             <ul className="flex flex-col gap-2 text-sm">
               <li>
-                <SiteLink
-                  href={`tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`}
+                <SupportPhoneLink
+                  locale={t.locale}
                   className={`inline-flex items-center gap-2 ${linkClass}`}
                 >
                   <Phone aria-hidden="true" className="size-4" />
-                  {localeDigits(t.locale, siteConfig.supportPhone)}
-                </SiteLink>
+                </SupportPhoneLink>
               </li>
               <li>
-                <SiteLink
-                  href={`mailto:${siteConfig.supportEmail}`}
+                <SupportEmailLink
                   className={`inline-flex items-center gap-2 ${linkClass}`}
                 >
                   <Mail aria-hidden="true" className="size-4" />
-                  {siteConfig.supportEmail}
-                </SiteLink>
+                </SupportEmailLink>
               </li>
               <li className="inline-flex items-center gap-2 text-sm text-brand-ink-muted">
                 <MapPin aria-hidden="true" className="size-4" />
-                {brand.address}
+                {site.address[t.locale]}
               </li>
             </ul>
           </div>
@@ -116,7 +123,7 @@ export function Footer({ t }: { t: Content }) {
         <div className="mt-6 flex flex-col-reverse items-center gap-6 border-t border-brand-hairline pt-4 sm:flex-row sm:justify-between">
           <p className="text-center text-xs text-brand-ink-muted sm:text-left">
             {footer.rights(year)}
-            <span className="mt-1 block">{footer.disclaimer}</span>
+            <span className="mt-1 block">{site.disclaimer[t.locale]}</span>
           </p>
 
           <ul className="flex items-center gap-2">

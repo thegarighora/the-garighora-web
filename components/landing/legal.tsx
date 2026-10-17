@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { FileText, Info, Languages } from "lucide-react";
 import { cn } from "cn";
+import { SupportEmailLink } from "@/components/landing/contact-links";
 import { SiteLink } from "@/components/landing/site-link";
 import type { Content } from "@/lib/i18n";
 import { localeDigits } from "@/lib/i18n/numerals";
-import { siteConfig } from "@/lib/site-config";
 
 /**
  * Shared furniture for the long-form policy pages (Terms, Privacy,
@@ -163,12 +163,9 @@ export function LegalBody({
             />
             <p className="text-sm leading-relaxed text-brand-ink-muted">
               {chrome.draftNotice.before}
-              <SiteLink
-                href={`mailto:${siteConfig.supportEmail}`}
+              <SupportEmailLink
                 className="font-medium text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300"
-              >
-                {siteConfig.supportEmail}
-              </SiteLink>
+              />
               {chrome.draftNotice.after}
             </p>
           </div>

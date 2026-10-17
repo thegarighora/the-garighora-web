@@ -18,6 +18,7 @@ import {
 import { languageAlternates, localeUrl } from "@/lib/seo";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 import { routes, siteConfig } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/site-settings";
 
 /**
  * This is the site's root layout — there is no `app/layout.tsx`, because the
@@ -158,7 +159,9 @@ export default async function RootLayout({
       }
     >
       <body className="flex min-h-full flex-col">
-        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+        <JsonLd
+          data={[organizationSchema(await getSiteSettings()), websiteSchema()]}
+        />
 
         <a
           href="#main"

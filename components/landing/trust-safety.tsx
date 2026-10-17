@@ -1,9 +1,8 @@
 import { Headphones } from "lucide-react";
+import { SupportPhoneLink } from "@/components/landing/contact-links";
 import { Section, SectionHeading } from "@/components/landing/section";
-import { ArrowLink, SiteLink } from "@/components/landing/site-link";
+import { ArrowLink } from "@/components/landing/site-link";
 import type { Content } from "@/lib/i18n";
-import { localeDigits } from "@/lib/i18n/numerals";
-import { siteConfig } from "@/lib/site-config";
 
 export function TrustSafety({
   t,
@@ -58,12 +57,10 @@ export function TrustSafety({
         </span>
         <p className="text-sm leading-relaxed text-brand-ink-muted">
           {trust.hotline.before}
-          <SiteLink
-            href={`tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`}
+          <SupportPhoneLink
+            locale={t.locale}
             className="font-semibold text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300"
-          >
-            {localeDigits(t.locale, siteConfig.supportPhone)}
-          </SiteLink>
+          />
           {trust.hotline.after}
         </p>
       </div>

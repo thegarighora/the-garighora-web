@@ -4,16 +4,19 @@ import {
   InfoCard,
   NumberedList,
 } from "@/components/landing/blocks";
+import {
+  SupportEmailLink,
+  SupportPhoneLink,
+} from "@/components/landing/contact-links";
 import { PageHero } from "@/components/landing/page-hero";
 import { Section, SectionHeading } from "@/components/landing/section";
 import { ArrowLink, SiteLink } from "@/components/landing/site-link";
 import { TrustSafety } from "@/components/landing/trust-safety";
 import { JsonLd } from "@/components/seo/json-ld";
-import { localeDigits } from "@/lib/i18n/numerals";
 import { resolveLocale, type LocaleParams } from "@/lib/i18n/page";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, webPageSchema } from "@/lib/structured-data";
-import { routes, siteConfig } from "@/lib/site-config";
+import { routes } from "@/lib/site-config";
 
 const linkClass =
   "font-medium text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300";
@@ -124,12 +127,7 @@ export default async function TrustSafetyPage({ params }: LocaleParams) {
               <li>
                 <strong>{card.duringLabel}</strong>
                 {card.duringBefore}
-                <SiteLink
-                  href={`tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`}
-                  className={linkClass}
-                >
-                  {localeDigits(locale, siteConfig.supportPhone)}
-                </SiteLink>
+                <SupportPhoneLink locale={locale} className={linkClass} />
                 {card.duringAfter}
               </li>
               <li>
@@ -143,12 +141,7 @@ export default async function TrustSafetyPage({ params }: LocaleParams) {
                   {card.contactLabel}
                 </SiteLink>
                 {card.elseMiddle}
-                <SiteLink
-                  href={`mailto:${siteConfig.supportEmail}`}
-                  className={linkClass}
-                >
-                  {siteConfig.supportEmail}
-                </SiteLink>
+                <SupportEmailLink className={linkClass} />
                 {card.elseAfter}
               </li>
             </ul>

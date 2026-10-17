@@ -1,4 +1,8 @@
 import { Mail, Phone } from "lucide-react";
+import {
+  SupportEmailLink,
+  SupportPhoneLink,
+} from "@/components/landing/contact-links";
 import { CalloutBand } from "@/components/landing/blocks";
 import { FaqAccordion } from "@/components/landing/faq";
 import { PageHero } from "@/components/landing/page-hero";
@@ -6,11 +10,10 @@ import { Section } from "@/components/landing/section";
 import { SiteLink } from "@/components/landing/site-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { allFaqs } from "@/lib/faq-data";
-import { localeDigits } from "@/lib/i18n/numerals";
 import { resolveLocale, type LocaleParams } from "@/lib/i18n/page";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, faqSchema } from "@/lib/structured-data";
-import { routes, siteConfig } from "@/lib/site-config";
+import { routes } from "@/lib/site-config";
 
 export async function generateMetadata({ params }: LocaleParams) {
   const { locale, t } = await resolveLocale(params);
@@ -107,20 +110,17 @@ export default async function FaqPage({ params }: LocaleParams) {
                 {page.notCovered.rest}
               </p>
               <div className="flex flex-wrap gap-4">
-                <SiteLink
-                  href={`tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`}
+                <SupportPhoneLink
+                  locale={locale}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary-700 dark:text-brand-primary-300"
                 >
                   <Phone aria-hidden="true" className="size-4" />
-                  {localeDigits(locale, siteConfig.supportPhone)}
-                </SiteLink>
-                <SiteLink
-                  href={`mailto:${siteConfig.supportEmail}`}
+                </SupportPhoneLink>
+                <SupportEmailLink
                   className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary-700 dark:text-brand-primary-300"
                 >
                   <Mail aria-hidden="true" className="size-4" />
-                  {siteConfig.supportEmail}
-                </SiteLink>
+                </SupportEmailLink>
               </div>
             </div>
           </div>

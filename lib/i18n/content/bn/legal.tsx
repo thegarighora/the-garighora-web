@@ -1,7 +1,10 @@
 import type { LegalSection } from "@/components/landing/legal";
+import {
+  PrivacyEmailLink,
+  SupportEmailLink,
+} from "@/components/landing/contact-links";
 import { SiteLink } from "@/components/landing/site-link";
 import { common } from "@/lib/i18n/content/bn/common";
-import { siteConfig } from "@/lib/site-config";
 
 const { routes } = common;
 
@@ -296,12 +299,7 @@ export const legal = {
             </p>
             <p>
               এই শর্ত নিয়ে প্রশ্ন থাকলে{" "}
-              <SiteLink
-                href={`mailto:${siteConfig.supportEmail}`}
-                className={linkClass}
-              >
-                {siteConfig.supportEmail}
-              </SiteLink>{" "}
+              <SupportEmailLink className={linkClass} />{" "}
               ঠিকানায়, কিংবা{" "}
               <SiteLink href={routes.contact} className={linkClass}>
                 যোগাযোগের পাতা
@@ -514,12 +512,7 @@ export const legal = {
             </ul>
             <p>
               অনুরোধ জানাতে লিখুন{" "}
-              <SiteLink
-                href={`mailto:${siteConfig.privacyEmail}`}
-                className={linkClass}
-              >
-                {siteConfig.privacyEmail}
-              </SiteLink>{" "}
+              <PrivacyEmailLink className={linkClass} />{" "}
               ঠিকানায়। ব্যবস্থা নেওয়ার আগে আমাদের আপনার পরিচয় যাচাই করতে হতে
               পারে।
             </p>
@@ -565,12 +558,7 @@ export const legal = {
             </p>
             <p>
               গোপনীয়তা নিয়ে প্রশ্ন যাবে{" "}
-              <SiteLink
-                href={`mailto:${siteConfig.privacyEmail}`}
-                className={linkClass}
-              >
-                {siteConfig.privacyEmail}
-              </SiteLink>{" "}
+              <PrivacyEmailLink className={linkClass} />{" "}
               ঠিকানায়; বাকি সবকিছু{" "}
               <SiteLink href={routes.contact} className={linkClass}>
                 যোগাযোগের পাতা

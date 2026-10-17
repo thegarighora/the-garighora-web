@@ -4,12 +4,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SupportPhoneLink } from "@/components/landing/contact-links";
 import { Section, SectionHeading } from "@/components/landing/section";
-import { ArrowLink, SiteLink } from "@/components/landing/site-link";
+import { ArrowLink } from "@/components/landing/site-link";
 import { featuredFaqs, type FaqItem } from "@/lib/faq-data";
 import type { Content } from "@/lib/i18n";
-import { localeDigits } from "@/lib/i18n/numerals";
-import { siteConfig } from "@/lib/site-config";
 
 /**
  * FAQ accordion. The home page passes the short featured set; the dedicated
@@ -56,12 +55,10 @@ export function Faq({ t, items }: { t: Content; items?: FaqItem[] }) {
         </ArrowLink>
         <p className="text-center text-sm text-brand-ink-muted">
           {section.stillUnsure.before}
-          <SiteLink
-            href={`tel:${siteConfig.supportPhone.replace(/\s|-/g, "")}`}
+          <SupportPhoneLink
+            locale={t.locale}
             className="font-semibold text-brand-primary-700 underline underline-offset-4 dark:text-brand-primary-300"
-          >
-            {localeDigits(t.locale, siteConfig.supportPhone)}
-          </SiteLink>
+          />
           {section.stillUnsure.after}
         </p>
       </div>
